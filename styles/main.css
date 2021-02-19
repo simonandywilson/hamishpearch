@@ -1,0 +1,310 @@
+/*----------------------------------------
+Typeface
+----------------------------------------*/
+
+@font-face {
+  font-family: font;
+  src: url("/") format("woff2"),
+    url("/") format("woff");
+}
+
+/*----------------------------------------
+Varibles
+----------------------------------------*/
+
+:root {
+  --font-family: helvetica;
+  --font-size: 0.7rem;
+  --line-height: 1rem;
+
+  --padding: 15px;
+  --figcaption-padding: 5px;
+  --plus-padding: 5px;
+
+  --svg-weight: 1px;
+  --svg-size: 0.8rem;
+}
+
+/*----------------------------------------
+Main
+----------------------------------------*/
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+html body {
+  position: absolute;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+/*----------------------------------------
+Header/Footer
+----------------------------------------*/
+
+header,
+footer {
+  position: fixed;
+  width: 100%;
+  padding: var(--padding);
+  z-index: 99;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+}
+
+footer {
+  bottom: 0;
+  padding-bottom: 0;
+}
+
+.bio {
+  display: grid;
+  grid-row-gap: var(--plus-padding);
+  grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+  cursor: crosshair;
+  padding-bottom: var(--padding);
+  padding-top: var(--padding);
+  background: linear-gradient(to bottom,
+      hsla(0, 0%, 100%, 0) 0%,
+      hsla(0, 0%, 100%, 0.013) 8.1%,
+      hsla(0, 0%, 100%, 0.049) 15.5%,
+      hsla(0, 0%, 100%, 0.104) 22.5%,
+      hsla(0, 0%, 100%, 0.175) 29%,
+      hsla(0, 0%, 100%, 0.259) 35.3%,
+      hsla(0, 0%, 100%, 0.352) 41.2%,
+      hsla(0, 0%, 100%, 0.45) 47.1%,
+      hsla(0, 0%, 100%, 0.55) 52.9%,
+      hsla(0, 0%, 100%, 0.648) 58.8%,
+      hsla(0, 0%, 100%, 0.741) 64.7%,
+      hsla(0, 0%, 100%, 0.825) 71%,
+      hsla(0, 0%, 100%, 0.896) 77.5%,
+      hsla(0, 0%, 100%, 0.951) 84.5%,
+      hsla(0, 0%, 100%, 0.987) 91.9%,
+      hsl(0, 0%, 100%) 100%);
+}
+
+.about {
+  width: 100%;
+  height: 0;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+}
+
+/*----------------------------------------
+Grid
+----------------------------------------*/
+
+table {
+  width: 100%;
+  border: none;
+  position: absolute;
+  padding: var(--padding);
+  padding-top: calc(var(--padding) * 3);
+  border-spacing: 0;
+}
+
+tr {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-bottom: var(--padding);
+}
+
+td {
+  visibility: hidden;
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+}
+
+tr:last-of-type {
+  padding-bottom: calc(var(--padding) * 3);
+}
+
+.info,
+.fix {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  cursor: crosshair;
+  user-select: none;
+}
+
+.title {
+  display: flex;
+}
+
+svg {
+  position: relative;
+  align-self: center;
+  height: var(--svg-size);
+  width: auto;
+  stroke-width: var(--svg-weight);
+  fill: none;
+  stroke: #000000;
+}
+
+.cross {
+  padding-left: var(--padding);
+  visibility: hidden;
+}
+
+.content {
+  display: none;
+  width: 100%;
+  grid-column: 1/-1;
+}
+
+.fix {
+  width: calc(100% - (var(--padding) * 2));
+  position: fixed;
+  z-index: 99;
+}
+
+/*----------------------------------------
+Project
+----------------------------------------*/
+
+section,
+figure {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-bottom: var(--padding);
+  visibility: hidden;
+}
+
+section {
+  padding-top: calc(var(--padding) * 2)
+}
+
+section,
+.image {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+}
+
+.description {
+  display: none;
+}
+
+.typewriter {
+  line-height: var(--line-height);
+  padding-right: var(--padding);
+}
+
+figcaption {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.7fr 0.3fr 0.5fr 0.5fr 0.5fr;
+  padding-bottom: var(--figcaption-padding);
+}
+
+.installation,
+.portrait,
+.normal,
+.double {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 66%;
+  overflow: hidden;
+}
+
+.portrait,
+.normal {
+  grid-column: 1 / 2;
+}
+
+.double {
+  grid-column: 1 / 3;
+}
+
+.installation>img,
+.portrait>img,
+.normal>img,
+.double>img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+}
+
+.portrait>img {
+  object-fit: contain;
+  object-position: 0% 50%;
+}
+
+
+.normal>img,
+.double>img {
+  padding-right: var(--padding);
+}
+
+/*----------------------------------------
+Slider
+----------------------------------------*/
+
+.gallery,
+.slider,
+.slide,
+.installation,
+.installation>img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.gallery {
+  width: calc(100% - var(--padding));
+  height: 0;
+  overflow: hidden;
+  padding-top: 66%;
+  position: relative;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.slide {
+  height: 100%;
+  width: 100%;
+  flex-shrink: 0;
+  scroll-behavior: smooth;
+  scroll-snap-align: center;
+}
