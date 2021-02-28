@@ -1,0 +1,9 @@
+header {
+    position: fixed;
+    width: 100%;
+    padding: var(--padding);
+    z-index: 99;
+
+    display: grid;
+    grid-template-columns: var(--three-column);
+}
