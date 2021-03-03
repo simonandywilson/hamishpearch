@@ -2,7 +2,9 @@ export default {
     title: "CV",
     name: "cv",
     type: "array",
-    of: [{
-        type: "section",
-    }],
-}
+    of: [
+        {
+            type: "categories",
+        },
+    ],
+};

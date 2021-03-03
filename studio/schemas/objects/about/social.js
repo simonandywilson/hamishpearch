@@ -1,9 +1,13 @@
+import { BiPaperclip } from "react-icons/bi";
+
 export default {
     title: "Social",
     name: "social",
     type: "object",
-    fields: [{
-        title: "Title",
+    icon: BiPaperclip,
+    fields: [
+        {
+            title: "Title",
             name: "title",
             type: "string",
         },
@@ -13,7 +17,4 @@ export default {
             type: "string",
         },
     ],
-    options: {
-        columns: 2
-    }
-}
+};

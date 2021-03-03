@@ -2,14 +2,15 @@ export default {
     title: "Project",
     name: "project",
     type: "document",
-    fieldsets: [{
+    fieldsets: [
+        {
             name: "homepage",
             title: "Project Information",
             options: {
                 collapsible: true,
                 collapsed: false,
-                columns: 2
-            }
+                columns: 2,
+            },
         },
         {
             name: "description",
@@ -17,7 +18,7 @@ export default {
             options: {
                 collapsible: true,
                 collapsed: false,
-            }
+            },
         },
         {
             name: "images",
@@ -25,80 +26,77 @@ export default {
             options: {
                 collapsible: true,
                 collapsed: false,
-            }
+            },
         },
     ],
-    fields: [{
+    fields: [
+        {
             // Title
             title: "Title",
             name: "title",
             type: "string",
-            fieldset: "homepage"
+            fieldset: "homepage",
         },
         // Location
         {
             title: "Location",
             name: "location",
             type: "string",
-            fieldset: "homepage"
+            fieldset: "homepage",
         },
         // Date
         {
             title: "Date",
             name: "date",
             type: "date",
-            description: "Month value is hidden on the homepage.",
             options: {
-                dateFormat: "yyyy-MM",
+                dateFormat: "yyyy",
             },
-            fieldset: "homepage"
+            fieldset: "homepage",
         },
         // Image Slider
         {
             title: "Slider",
             name: "slider",
             type: "gallery",
-            fieldset: "description"
+            fieldset: "description",
         },
         // Description
         {
             title: "Description",
             name: "description",
-            type: "array",
-            of: [{
-                type: "block"
-            }],
-            fieldset: "description"
+            type: "description",
+            fieldset: "description",
         },
         // Images
         {
             title: "Images",
             name: "images",
             type: "images",
-            fieldset: "images"
+            fieldset: "images",
         },
         // Gallery
         {
             title: "Gallery",
             name: "gallery",
             type: "gallery",
-            fieldset: "images"
+            fieldset: "images",
         },
     ],
     preview: {
         select: {
-          title: "title",
-          slider: "slider",
-          date: "date"
+            title: "title",
+            slider: "slider",
+            date: "date",
         },
         prepare(selection) {
-          const {title, slider, date} = selection
-          console.log(title)
-          return {
-            title: (title === undefined) ? 'Project' : title,
-            media: slider[0],
-            subtitle: date.split("-")[0]
-          }
-        }
-      }
-}
+            const { title, slider, date } = selection;
+            console.log(title);
+            return {
+                title: title === undefined ? "Project" : title,
+                media: slider[0],
+                subtitle: date.split("-")[0],
+            };
+        },
+    },
+};
