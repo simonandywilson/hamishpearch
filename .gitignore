@@ -31,3 +31,6 @@ Temporary Items
 
 # Local History for Visual Studio Code
 .history/
+
+# Node Modules
+node_modules/

@@ -20,8 +20,22 @@ footer {
 .about {
     width: 100%;
     height: 0;
+}
+
+section {
+    width: 100%;
+    margin-bottom: var(--padding);
+}
+
+.row {
+    width: 100%;
     display: grid;
     grid-template-columns: var(--four-column);
+}
+
+.subtitle {
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
 }
 
 .contact {
@@ -30,6 +44,7 @@ footer {
     display: grid;
     grid-template-columns: var(--four-column);
     padding-top: var(--padding);
+    margin-bottom: var(--padding);
 }
 
 .plus {

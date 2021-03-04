@@ -1,11 +1,23 @@
 import React from "react"
-import headerStyle from "./header.module.css"
+import styled from "styled-components"
 
-export default function Header() {
+const Container = styled.header`
+    position: fixed;
+    width: 100%;
+    padding: var(--padding);
+    z-index: 99;
+    display: grid;
+    grid-template-columns: var(--three-column);
+`;
+
+const Header = () => {
     return (
-    <header className={headerStyle}>
-        <div>Title</div>
-        <div>Details</div>
-        <div>Year</div>
-    </header>)
+        <Container>
+            <div>Title</div>
+            <div>Details</div>
+            <div>Year</div>
+        </Container>
+    );
 }
+
+export default Header
