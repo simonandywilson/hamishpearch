@@ -1,0 +1,188 @@
+table {
+    width: 100%;
+    border: none;
+    margin: 0;
+    position: absolute;
+    padding: var(--padding);
+    padding-top: calc((var(--padding) * 2) + var(--row-padding));
+    border-spacing: 0;
+}
+
+tr {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-bottom: var(--row-padding);
+}
+
+tr:last-of-type {
+    margin-bottom: calc(var(--padding) * 3);
+}
+
+td {
+    /* visibility: hidden; */
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: var(--three-column);
+    grid-auto-rows: var(--row-height);
+    cursor: crosshair;
+    user-select: none;
+    z-index: 99;
+}
+
+.title {
+    display: flex;
+}
+
+.content {
+    /* display: none; */
+    width: 100%;
+    grid-column: 1/-1;
+}
+
+.cross {
+    /* visibility: hidden; */
+    width: max-content;
+    height: max-content;
+    display: inline-block;
+    transform: rotate(45deg);
+}
+
+.padding {
+    padding-right: var(--padding);
+}
+
+/*----------------------------------------
+Project
+----------------------------------------*/
+
+section,
+figure {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-bottom: var(--padding);
+    /* visibility: hidden; */
+}
+
+section {
+    padding-top: var(--padding);
+}
+
+section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--three-column);
+}
+
+figcaption {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--five-column);
+    grid-auto-rows: minmax(var(--row-height), auto);
+    padding-bottom: var(--figcaption-padding);
+}
+
+.materials {
+    padding-right: var(--padding);
+}
+
+/*----------------------------------------
+Images
+----------------------------------------*/
+
+.image {
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--three-column);
+}
+
+.Small {
+    grid-column: 1 / 2;
+}
+
+.Large {
+    grid-column: 1 / 3;
+}
+
+/* .portrait>img {
+  object-fit: contain;
+  object-position: 0% 50%;
+} */
+
+/*----------------------------------------
+Slider
+----------------------------------------*/
+
+/* .gallery {
+  position: relative;
+  width: calc(100% - var(--padding));
+  padding-top: 66%;
+}
+
+.swiper-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FAFAFA;
+}
+
+.installation {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: blue;
+}
+
+.installation>img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+}  */
+
+
+/*----------------------------------------
+Gallery
+----------------------------------------*/
+
+
+
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 0.2fr));
+  grid-gap: var(--padding);
+  grid-auto-flow: dense;
+}
+
+.thumbnail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.preview {
+  width: 100%;
+  display: grid;
+  grid-template-columns: var(--three-column);
+  margin-bottom: var(--padding);
+}

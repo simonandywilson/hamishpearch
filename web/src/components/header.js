@@ -3,8 +3,8 @@ import styled from "styled-components"
 
 const Container = styled.header`
     position: fixed;
-    width: 100%;
-    padding: var(--padding);
+    width: calc(100% - (var(--padding)) * 2);
+    margin: var(--padding);
     z-index: 99;
     display: grid;
     grid-template-columns: var(--three-column);
