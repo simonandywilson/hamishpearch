@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import style from "./project.module.css";
 import Image from "gatsby-image";
 
-const Project = () => {
+import Gallery from "../components/gallery";
+
+const Project = ({ params }) => {
+    
     const {
         allSanityProject: { nodes: projects },
     } = useStaticQuery(getData);
+
+    // Gallery Setup
+    const [thumb, setThumb] = useState({
+        name: "Gallery Name",
+        caption: "Initial Caption",
+        thumbnail: null,
+        alt: "alt",
+    });
 
     return (
         <table>
             <tbody>
                 {projects.map((project) => {
-                    const count = project.images.length;
                     return (
-                        <tr key={project.id}>
+                        <tr key={project._id}>
                             {/* Project info */}
-                            <td className={style.project}>
+                            <td
+                                className={style.project}
+                                onClick={() => params.setState(1)}
+                                role="presentation"
+                            >
                                 <div className={style.title}>
                                     <span className={style.padding}>{project.title}</span>
                                     <span className={style.cross}>&#10005;</span>
@@ -24,8 +38,9 @@ const Project = () => {
                                 <div>{project.location}</div>
                                 <div>{project.date}</div>
                             </td>
-                            {/* Slider & description */}
+                            {/* Content */}
                             <td className={style.content}>
+                                {/* Slider & description */}
                                 <section>
                                     <div className={style.gallery}></div>
                                     <div className={style.description}>
@@ -39,7 +54,7 @@ const Project = () => {
                                             <figcaption>
                                                 <div className={style.name}>{image.title}</div>
                                                 <div className={style.count}>
-                                                    {index + 1}/{count}
+                                                    {index + 1}/{project.images.length}
                                                 </div>
                                                 <div className={style.materials}>
                                                     {image.materials}
@@ -52,9 +67,6 @@ const Project = () => {
                                             <div className={style.image}>
                                                 <div className={style[image.size]}>
                                                     <Image
-                                                        // fluid={image.asset.fluid}
-                                                        // aspectRatio={image.asset.aspectRatio}
-                                                        // className={image.size}
                                                         alt={image.alt}
                                                         fluid={{
                                                             ...image.asset.fluid,
@@ -67,35 +79,39 @@ const Project = () => {
                                     );
                                 })}
                                 {/* Gallery */}
-                                <figure className={style.item}>
-                                    <figcaption>
-                                        <div className={style.name}>Extra</div>
-                                        <div className={style.count}></div>
-                                    </figcaption>
-                                    <div className={style.preview}>
-                                        <Image
-                                            fluid={{
-                                                ...project.gallery[0].asset.fluid,
-                                                aspectRatio: 1.5,
-                                            }}
-                                        />
-                                    </div>
-                                    <div className={style.gallery}>
-                                        {project.gallery.map((image) => {
-                                            return (
-                                                <div className={style.thumbnail}>
-                                                    <Image
-                                                        alt={image.alt}
-                                                        fluid={{
-                                                            ...image.asset.fluid,
-                                                            aspectRatio: 1.5,
-                                                        }}
-                                                    />
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </figure>
+                                <Gallery thumb={thumb}>
+                                    {project.gallery.map((image) => {
+                                        return (
+                                            <div
+                                                className={style.thumbnail}
+                                                key={image._key}
+                                                onMouseOver={() => {
+                                                    setThumb({
+                                                        caption: image.title,
+                                                        thumbnail: image.asset.fluid,
+                                                        alt: image.alt,
+                                                    });
+                                                }}
+                                                onFocus={() => {
+                                                    setThumb({
+                                                        caption: image.title,
+                                                        thumbnail: image.asset.fluid,
+                                                        alt: image.alt,
+                                                    });
+                                                }}
+                                                role="presentation"
+                                            >
+                                                <Image
+                                                    alt={image.alt}
+                                                    fluid={{
+                                                        ...image.asset.fluid,
+                                                        aspectRatio: 1.5,
+                                                    }}
+                                                />
+                                            </div>
+                                        );
+                                    })}
+                                </Gallery>
                             </td>
                         </tr>
                     );
@@ -109,15 +125,16 @@ const getData = graphql`
     {
         allSanityProject {
             nodes {
+                _id
                 title
                 location
-                date
+                date(formatString: "YYYY")
                 slider {
                     title
                     alt
                     asset {
                         fluid {
-                            src
+                            ...GatsbySanityImageFluid
                         }
                     }
                 }
@@ -136,16 +153,17 @@ const getData = graphql`
                     alt
                     asset {
                         fluid(maxWidth: 2000) {
-                            src
+                            ...GatsbySanityImageFluid
                         }
                     }
                 }
                 gallery {
+                    _key
                     title
                     alt
                     asset {
                         fluid(maxWidth: 1000) {
-                            src
+                            ...GatsbySanityImageFluid
                         }
                     }
                 }

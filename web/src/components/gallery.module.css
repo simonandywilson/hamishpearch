@@ -1,0 +1,14 @@
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 0.15fr));
+  grid-gap: var(--padding);
+  grid-auto-flow: dense;
+}
+
+.preview {
+  width: 100%;
+  display: grid;
+  grid-template-columns: var(--three-column);
+  margin-bottom: var(--padding);
+}

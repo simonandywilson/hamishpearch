@@ -2,13 +2,14 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import style from "./footer.module.css";
 
-const Footer = () => {
+const Footer = ({ props }) => {
     const {
         sanityAbout: { name, occupation, location, dob, cv, contact },
     } = useStaticQuery(getData);
 
     return (
         <footer>
+            <button>test</button>
             <div className={style.bio}>
                 <div>{name}</div>
                 <div>{occupation}</div>

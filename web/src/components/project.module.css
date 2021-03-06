@@ -157,20 +157,9 @@ Slider
   object-fit: cover;
 }  */
 
-
 /*----------------------------------------
 Gallery
 ----------------------------------------*/
-
-
-
-.gallery {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 0.2fr));
-  grid-gap: var(--padding);
-  grid-auto-flow: dense;
-}
 
 .thumbnail {
   position: relative;
@@ -178,11 +167,4 @@ Gallery
   height: 100%;
   overflow: hidden;
   cursor: crosshair;
-}
-
-.preview {
-  width: 100%;
-  display: grid;
-  grid-template-columns: var(--three-column);
-  margin-bottom: var(--padding);
 }

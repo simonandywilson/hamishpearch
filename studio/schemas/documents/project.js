@@ -22,7 +22,15 @@ export default {
         },
         {
             name: "images",
-            title: "Project Images & Gallery",
+            title: "Project Images",
+            options: {
+                collapsible: true,
+                collapsed: false,
+            },
+        },
+        {
+            name: "gallery",
+            title: "Project Gallery",
             options: {
                 collapsible: true,
                 collapsed: false,
@@ -77,10 +85,16 @@ export default {
         },
         // Gallery
         {
+            title: "Gallery Title",
+            name: "gallerytitle",
+            type: "string",
+            fieldset: "gallery",
+        },
+        {
             title: "Gallery",
             name: "gallery",
             type: "gallery",
-            fieldset: "images",
+            fieldset: "gallery",
         },
     ],
     preview: {
