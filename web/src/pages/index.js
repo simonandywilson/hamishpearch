@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "../components/header";
 import Project from "../components/project";
@@ -12,6 +12,8 @@ const Home = () => {
     const {
         allSanityProject: { nodes: projects },
     } = useStaticQuery(getData);
+
+    const [state, setState] = useState(0)
 
     return (
         <>
@@ -58,9 +60,7 @@ const Home = () => {
                                     );
                                 })}
                             >
-                                <Gallery
-                                    name={project.gallerytitle}
-                                >
+                                <Gallery name={project.gallerytitle}>
                                     {project.gallery.map((image) => {
                                         return (
                                             <div key={image._key}>
