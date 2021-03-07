@@ -2,7 +2,8 @@ footer {
     position: fixed;
     width: calc(100% - (var(--padding)) * 2);
     bottom: 0;
-    padding: var(--padding);
+    padding-left: var(--padding);
+    padding-right: var(--padding);
     padding-bottom: 0;
     z-index: 99;
 }

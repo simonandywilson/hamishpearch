@@ -1,33 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Header from "../components/header";
-import Project from "../components/project";
-import Gallery from "../components/gallery";
-import Footer from "../components/footer";
+import style from "./project.module.css";
 import Image from "gatsby-image";
 
-import style from "../components/project.module.css";
+import Gallery from "./gallery";
 
-const Home = () => {
+const Project = ({ params }) => {
+    
     const {
         allSanityProject: { nodes: projects },
     } = useStaticQuery(getData);
 
+    // Gallery Setup
+    const [thumb, setThumb] = useState({
+        name: "Gallery Name",
+        caption: "Initial Caption",
+        thumbnail: null,
+        alt: "alt",
+    });
+
     return (
-        <>
-            <Header />
-            <table>
-                <tbody>
-                    {projects.map((project) => {
-                        return (
-                            <Project
-                                collapsed={true}
-                                key={project._id}
-                                title={project.title}
-                                location={project.location}
-                                date={project.date}
-                                description={project.description[0].children[0].text}
-                                images={project.images.map((image, index) => {
+        <table>
+            <tbody>
+                {projects.map((project) => {
+                    return (
+                        <tr key={project._id}>
+                            {/* Project info */}
+                            <td
+                                className={style.project}
+                                onClick={() => params.setState(1)}
+                                role="presentation"
+                            >
+                                <div className={style.title}>
+                                    <span className={style.padding}>{project.title}</span>
+                                    <span className={style.cross}>&#10005;</span>
+                                </div>
+                                <div>{project.location}</div>
+                                <div>{project.date}</div>
+                            </td>
+                            {/* Content */}
+                            <td className={style.content}>
+                                {/* Slider & description */}
+                                <section>
+                                    <div className={style.gallery}></div>
+                                    <div className={style.description}>
+                                        {project.description[0].children[0].text}
+                                    </div>
+                                </section>
+                                {/* Images */}
+                                {project.images.map((image, index) => {
                                     return (
                                         <figure className={style.item} key={image._key}>
                                             <figcaption>
@@ -57,15 +78,30 @@ const Home = () => {
                                         </figure>
                                     );
                                 })}
-                            >
-                                <Gallery
-                                    name={project.gallerytitle}
-                                >
+                                {/* Gallery */}
+                                <Gallery thumb={thumb}>
                                     {project.gallery.map((image) => {
                                         return (
-                                            <div key={image._key}>
+                                            <div
+                                                className={style.thumbnail}
+                                                key={image._key}
+                                                onMouseOver={() => {
+                                                    setThumb({
+                                                        caption: image.title,
+                                                        thumbnail: image.asset.fluid,
+                                                        alt: image.alt,
+                                                    });
+                                                }}
+                                                onFocus={() => {
+                                                    setThumb({
+                                                        caption: image.title,
+                                                        thumbnail: image.asset.fluid,
+                                                        alt: image.alt,
+                                                    });
+                                                }}
+                                                role="presentation"
+                                            >
                                                 <Image
-                                                    title={image.title}
                                                     alt={image.alt}
                                                     fluid={{
                                                         ...image.asset.fluid,
@@ -76,17 +112,14 @@ const Home = () => {
                                         );
                                     })}
                                 </Gallery>
-                            </Project>
-                        );
-                    })}
-                </tbody>
-            </table>
-            <Footer />
-        </>
+                            </td>
+                        </tr>
+                    );
+                })}
+            </tbody>
+        </table>
     );
 };
-
-export default Home;
 
 const getData = graphql`
     {
@@ -124,7 +157,6 @@ const getData = graphql`
                         }
                     }
                 }
-                gallerytitle
                 gallery {
                     _key
                     title
@@ -139,3 +171,5 @@ const getData = graphql`
         }
     }
 `;
+
+export default Project;

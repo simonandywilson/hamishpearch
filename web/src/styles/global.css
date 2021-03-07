@@ -36,3 +36,16 @@ html body {
   font-size: var(--font-size);
   line-height: var(--line-height);
 }
+
+.collapse-button {
+  display: block;
+  width: 100%;
+}
+
+.collapse-content.collapsed {
+  display: none;
+}
+
+.collapsed-content.expanded {
+  display: block;
+}

@@ -6,6 +6,15 @@
   grid-auto-flow: dense;
 }
 
+.gallery > div {
+  cursor: crosshair;
+  pointer-events: all;
+}
+
+.gallery > div:hover {
+  outline: 1px solid #000000;
+}
+
 .preview {
   width: 100%;
   display: grid;

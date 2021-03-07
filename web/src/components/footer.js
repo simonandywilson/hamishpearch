@@ -9,7 +9,6 @@ const Footer = ({ props }) => {
 
     return (
         <footer>
-            <button>test</button>
             <div className={style.bio}>
                 <div>{name}</div>
                 <div>{occupation}</div>
