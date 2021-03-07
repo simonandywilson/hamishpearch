@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "../components/header";
 import Project from "../components/project";
@@ -12,8 +12,6 @@ const Home = () => {
     const {
         allSanityProject: { nodes: projects },
     } = useStaticQuery(getData);
-
-    const [state, setState] = useState(0)
 
     return (
         <>
