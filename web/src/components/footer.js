@@ -1,25 +1,138 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import style from "./footer.module.css";
+import gsap from "gsap";
 
-const Footer = ({ props }) => {
+const Footer = (props) => {
     const {
         sanityAbout: { name, occupation, location, dob, cv, contact },
     } = useStaticQuery(getData);
 
+    let footer = useRef(null);
+    let about = useRef(null);
+    let plus = useRef(null);
+
+    const [state, setState] = useState({
+        disabled: false,
+        collapsed: true,
+        name: "close",
+    });
+
+    // Set state to disabled if projects are opened
+    useEffect(() => {
+        if (props.projectsActive > 0) {
+            // Project opened
+            setState({ ...state, disabled: true });
+        } else {
+            // Projects closed
+            setState({ ...state, disabled: false });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.projectsActive]);
+
+    // useEffect(() => {
+    //     console.log(state);
+    // }, [state]);
+
+    const handleFooter = () => {
+        // If collapsed & not disabled
+        if (state.collapsed === true && state.disabled === false) {
+            setState({ ...state, collapsed: false, name: "open" });
+            // If expanded & not disabled
+        } else if (state.collapsed === false && state.disabled === false) {
+            setState({ ...state, collapsed: true, name: "close" });
+        }
+    };
+
+    useEffect(() => {
+        const padding = parseInt(getComputedStyle(document.body).getPropertyValue("--padding"), 10);
+        const rowHeight = parseInt(
+            getComputedStyle(document.body).getPropertyValue("--row-height"),
+            10
+        );
+        const footerOffset = rowHeight * 2;
+        if (state.collapsed === true && state.disabled === false) {
+            // Close Footer
+            gsap.to(footer, {
+                paddingBottom: 0,
+                bottom: 0,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+            gsap.to(about, {
+                height: 0,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+            gsap.to(plus, {
+                rotate: 45,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+        } else if (state.collapsed === false && state.disabled === false) {
+            // Open Footer
+            gsap.to(footer, {
+                paddingBottom: padding,
+                bottom: 0,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+            gsap.set(about, {
+                height: "auto",
+                ease: "Power3.easeOut",
+            });
+            gsap.from(about, {
+                height: 0,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+            gsap.to(plus, {
+                rotate: 180,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+        } else if (state.collapsed === true && state.disabled === true) {
+            gsap.to(footer, {
+                paddingBottom: 0,
+                bottom: -Math.abs(footerOffset),
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+        } else if (state.collapsed === false && state.disabled === true) {
+            gsap.to(footer, {
+                paddingBottom: 0,
+                bottom: -Math.abs(footerOffset),
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+            gsap.to(about, {
+                height: 0,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+            gsap.to(plus, {
+                rotate: 45,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+        }
+    });
+
     return (
-        <footer>
-            <div className={style.bio}>
+        <footer className={style.footer} ref={(el) => (footer = el)}>
+            <div className={style.bio} onClick={handleFooter} role="presentation">
                 <div>{name}</div>
                 <div>{occupation}</div>
                 <div>{location}</div>
                 <div>{dob}</div>
-                <div className={style.plus}>&#10005;</div>
+                <div className={style.plus} ref={(el) => (plus = el)}>
+                    &#10005;
+                </div>
             </div>
-            <div className={style.about}>
+            <div className={style.about} ref={(el) => (about = el)}>
                 {cv.map((categories) => {
                     return (
-                        <section key={categories._key}>
+                        <section className={style.section} key={categories._key}>
                             {categories.content.map((category) => {
                                 return (
                                     <div className={style.row} key={category._key}>

@@ -24,19 +24,21 @@ const Gallery = (props) => {
     });
     
     return (
-        <figure className={style.item}>
-            <figcaption>
+        <figure className={style.figure}>
+            <figcaption className={style.figcaption}>
                 <div className={style.name}>{props.name}</div>
                 <div className={style.caption}>{thumb.caption}</div>
             </figcaption>
             <div className={style.preview}>
-                <Image
-                    alt={thumb.alt}
-                    fluid={{
-                        ...thumb.preview,
-                        aspectRatio: 1.5,
-                    }}
-                />
+                <div className={style.small}>
+                    <Image
+                        alt={thumb.alt}
+                        fluid={{
+                            ...thumb.preview,
+                            aspectRatio: 1.5,
+                        }}
+                    />
+                </div>
             </div>
             <div className={style.gallery}>{thumbnails}</div>
         </figure>

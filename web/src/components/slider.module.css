@@ -1,0 +1,34 @@
+/*----------------------------------------
+Slider
+----------------------------------------*/
+
+.section {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-bottom: var(--padding);
+    display: grid;
+    grid-template-columns: var(--three-column);
+    padding-top: var(--padding);
+
+    /* visibility: hidden; */
+}
+
+.slider {
+    position: relative;
+    padding-top: 66%;
+    margin-right: var(--padding);
+    background: salmon;
+}
+
+.sliderContainer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fafafa;
+}

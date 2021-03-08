@@ -5,6 +5,7 @@ Variables
 :root {
   --font-family: helvetica;
   --font-size: 0.75rem;
+  --subtitle: 0.65rem;
 
   --smallcaps-font-size: 0.9rem;
   --line-height: 1rem;
@@ -37,15 +38,61 @@ html body {
   line-height: var(--line-height);
 }
 
-.collapse-button {
-  display: block;
+table {
+    width: 100%;
+    border: none;
+    margin: 0;
+    position: absolute;
+    padding: var(--padding);
+    padding-top: calc((var(--padding) * 2) + var(--row-padding));
+    border-spacing: 0;
+}
+
+/*----------------------------------------
+Typography
+----------------------------------------*/
+
+a {
+  width: max-content;
+  color: #000000;
+  text-decoration: underline;
+  transition: 0.5s;
+}
+
+a:visited, a:active {
+  color: #000000;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+ .swiper-container {
+  height: 100%;
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FAFAFA;
+} 
+
+.swiper-slide > .gatsby-image-wrapper {
+  position:static!important;
 }
 
-.collapse-content.collapsed {
-  display: none;
+.swiper-slide > img {
+  max-width: 100%;
 }
 
-.collapsed-content.expanded {
-  display: block;
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: #000000!important;
 }
+
+.swiper-container-horizontal > .swiper-pagination-progressbar,
+.swiper-container-vertical > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+  height: 1px!important;
+  bottom: 0!important;
+}
+

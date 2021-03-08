@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
+
 import Header from "../components/header";
 import Project from "../components/project";
+import Slider from "../components/slider";
+import Row from "../components/row";
 import Gallery from "../components/gallery";
 import Footer from "../components/footer";
-import Image from "gatsby-image";
 
-import style from "../components/project.module.css";
+import Image from "gatsby-image";
+import { SwiperSlide } from "swiper/react";
+import "../styles/swiper.scss";
+import "../styles/navigation.scss";
+import "../styles/pagination.scss";
 
 const Home = () => {
     const {
         allSanityProject: { nodes: projects },
     } = useStaticQuery(getData);
+
+    const [projectsActive, setProjectsActive] = useState(0);
 
     return (
         <>
@@ -21,43 +29,39 @@ const Home = () => {
                     {projects.map((project) => {
                         return (
                             <Project
-                                collapsed={true}
+                                projectsActive={projectsActive}
+                                setProjectsActive={setProjectsActive}
                                 key={project._id}
                                 title={project.title}
                                 location={project.location}
                                 date={project.date}
-                                description={project.description[0].children[0].text}
-                                images={project.images.map((image, index) => {
+                            >
+                                <Slider description={project.description[0].children[0].text}>
+                                    {project.slider.map((image) => {
+                                        return (
+                                            <SwiperSlide key={image._key}>
+                                                <Image fluid={image.asset.fluid} />
+                                            </SwiperSlide>
+                                        );
+                                    })}
+                                </Slider>
+                                {project.images.map((image, index) => {
                                     return (
-                                        <figure className={style.item} key={image._key}>
-                                            <figcaption>
-                                                <div className={style.name}>{image.title}</div>
-                                                <div className={style.count}>
-                                                    {index + 1}/{project.images.length}
-                                                </div>
-                                                <div className={style.materials}>
-                                                    {image.materials}
-                                                </div>
-                                                <div className={style.dimensions}>
-                                                    {image.dimensions}
-                                                </div>
-                                                <div className={style.year}>{image.date}</div>
-                                            </figcaption>
-                                            <div className={style.image}>
-                                                <div className={style[image.size]}>
-                                                    <Image
-                                                        alt={image.alt}
-                                                        fluid={{
-                                                            ...image.asset.fluid,
-                                                            aspectRatio: 1.5,
-                                                        }}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </figure>
+                                        <Row
+                                            key={image._key}
+                                            index={index + 1}
+                                            length={project.images.length}
+                                            title={image.title}
+                                            materials={image.materials}
+                                            dimensions={image.dimensions}
+                                            date={image.date}
+                                            size={image.size}
+                                            alt={image.alt}
+                                            image={image.asset.fluid}
+                                        ></Row>
                                     );
                                 })}
-                            >
+
                                 <Gallery name={project.gallerytitle}>
                                     {project.gallery.map((image) => {
                                         return (
@@ -79,7 +83,7 @@ const Home = () => {
                     })}
                 </tbody>
             </table>
-            <Footer />
+            <Footer projectsActive={projectsActive} />
         </>
     );
 };
@@ -95,10 +99,11 @@ const getData = graphql`
                 location
                 date(formatString: "YYYY")
                 slider {
+                    _key
                     title
                     alt
                     asset {
-                        fluid {
+                        fluid(maxWidth: 1000) {
                             ...GatsbySanityImageFluid
                         }
                     }

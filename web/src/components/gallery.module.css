@@ -1,7 +1,25 @@
+.figure {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-bottom: var(--padding);
+    /* visibility: hidden; */
+}
+
+.figcaption {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--five-column);
+    grid-auto-rows: minmax(var(--row-height), auto);
+    padding-bottom: var(--figcaption-padding);
+}
+
 .gallery {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 0.15fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
   grid-gap: var(--padding);
   grid-auto-flow: dense;
 }
@@ -20,4 +38,8 @@
   display: grid;
   grid-template-columns: var(--three-column);
   margin-bottom: var(--padding);
+}
+
+.small {
+  margin-right: var(--padding);
 }
