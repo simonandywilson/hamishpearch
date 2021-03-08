@@ -3,6 +3,8 @@ tr {
     display: grid;
     grid-template-columns: 1fr;
     padding-bottom: var(--row-padding);
+
+    visibility: hidden;
 }
 
 tr:last-of-type {

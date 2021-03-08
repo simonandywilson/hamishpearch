@@ -6,6 +6,8 @@
     padding-right: var(--padding);
     padding-bottom: 0;
     z-index: 99;
+
+    visibility: hidden;
 }
 
 .bio {

@@ -18,6 +18,14 @@ const Footer = (props) => {
         name: "close",
     });
 
+    // Initial fade in
+    useEffect(() => {
+        gsap.to(footer, {
+            autoAlpha: 1,
+            duration: 2,
+        });
+    }, []);
+
     // Set state to disabled if projects are opened
     useEffect(() => {
         if (props.projectsActive > 0) {

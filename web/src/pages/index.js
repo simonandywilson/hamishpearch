@@ -23,7 +23,7 @@ const Home = () => {
 
     return (
         <>
-            <Header />
+            <Header/>
             <table>
                 <tbody>
                     {projects.map((project) => {

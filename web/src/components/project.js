@@ -4,7 +4,9 @@ import gsap from "gsap";
 
 const Project = (props) => {
     // Variables for animated dom nodes
+    let projectContainer = useRef(null);
     let project = useRef(null);
+    let cross = useRef(null);
     let content = useRef(null);
 
     const [state, setState] = useState({
@@ -37,14 +39,26 @@ const Project = (props) => {
         );
         const padding = parseInt(getComputedStyle(document.body).getPropertyValue("--padding"), 10);
         const stickyOffset = padding * 2 + rowPadding;
+        // Initial fade in
+        gsap.to(projectContainer, {
+            autoAlpha: 1,
+            delay: 2,
+            duration: 2,
+            stagger: 0.2,
+        });
         if (state.collapsed === true) {
             // Close Project
             gsap.set(project, {
                 position: "relative",
-                top: "unset"
+                top: "unset",
             });
             gsap.set(content, {
                 display: "none",
+                autoAlpha: 0
+            });
+            gsap.to(cross, {
+                rotation: 45,
+                duration: 0.5,
             });
         } else if (state.collapsed === false) {
             // Open Project
@@ -55,11 +69,19 @@ const Project = (props) => {
             gsap.set(content, {
                 display: "block",
             });
+            gsap.to(content, {
+                autoAlpha: 1,
+                duration: 1,
+            });
+            gsap.to(cross, {
+                rotation: 180,
+                duration: 0.5,
+            });
         }
     });
 
     return (
-        <tr>
+        <tr ref={(el) => (projectContainer = el)}>
             <td
                 className={style.project}
                 onClick={handleProject}
@@ -69,7 +91,9 @@ const Project = (props) => {
             >
                 <div className={style.title}>
                     <span className={style.padding}>{props.title}</span>
-                    <span className={style.cross}>&#10005;</span>
+                    <span className={style.cross} ref={(el) => (cross = el)}>
+                        &#10005;
+                    </span>
                 </div>
                 <div>{props.location}</div>
                 <div>{props.date}</div>
@@ -82,4 +106,3 @@ const Project = (props) => {
 };
 
 export default Project;
-
