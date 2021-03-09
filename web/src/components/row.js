@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./project.module.css";
-import Image from "gatsby-image"
+import Image from "gatsby-image";
 
 const Row = React.forwardRef((props, ref) => {
+
+    const [aspect, setAspect] = useState(0);
+
+    useEffect(() => {
+        if (props.aspectRatio > 1) {
+            setAspect(1.5);
+        } else if (props.aspectRatio < 1) {
+            setAspect(0.66);
+        } else {
+            setAspect(1);
+        }
+    }, []);
+
     return (
         <figure className={style.figure} key={props._key} ref={ref}>
             <figcaption className={style.figcaption}>
@@ -20,9 +33,8 @@ const Row = React.forwardRef((props, ref) => {
                         alt={props.alt}
                         fluid={{
                             ...props.image,
-                            aspectRatio: 1.5,
+                            aspectRatio: aspect,
                         }}
-                        durationFadeIn={10000}
                     />
                 </div>
             </div>
@@ -31,5 +43,3 @@ const Row = React.forwardRef((props, ref) => {
 });
 
 export default Row;
-
-

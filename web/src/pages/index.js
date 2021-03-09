@@ -61,7 +61,7 @@ const Home = () => {
                                     {project.slider.map((image) => {
                                         return (
                                             <SwiperSlide key={image._key}>
-                                                <Image fluid={image.asset.fluid} durationFadeIn ={10000}/>
+                                                <Image fluid={image.asset.fluid}/>
                                             </SwiperSlide>
                                         );
                                     })}
@@ -79,6 +79,7 @@ const Home = () => {
                                             size={image.size}
                                             alt={image.alt}
                                             image={image.asset.fluid}
+                                            aspectRatio={image.asset.fluid.aspectRatio}
                                         ></Row>
                                     );
                                 })}
@@ -94,7 +95,6 @@ const Home = () => {
                                                         ...image.asset.fluid,
                                                         aspectRatio: 1.5,
                                                     }}
-                                                    durationFadeIn={10000}
                                                 />
                                             </div>
                                         );
@@ -145,6 +145,7 @@ const getData = graphql`
                     alt
                     asset {
                         fluid(maxWidth: 2000) {
+                            aspectRatio
                             ...GatsbySanityImageFluid
                         }
                     }
