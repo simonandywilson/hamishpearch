@@ -13,7 +13,12 @@ const Slider = (props) => {
         <section className={style.section}>
             <div className={style.slider}>
                 <div className={style.sliderContainer}>
-                    <Swiper navigation pagination={{ type: "progressbar" }} observer={"true"}>
+                    <Swiper
+                        navigation
+                        pagination={{ type: "progressbar" }}
+                        observer={"true"}
+                        observeParents={"true"}
+                    >
                         {props.children}
                     </Swiper>
                 </div>
