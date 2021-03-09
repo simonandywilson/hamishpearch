@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import style from "./gallery.module.css";
 import Image from "gatsby-image";
 
-const Gallery = (props) => {
+const Gallery = React.forwardRef((props, ref) => {
     
     const thumbnails = React.Children.map(props.children, (child) =>
         React.cloneElement(child, {
-            key:{},
+            // key:{},
             onMouseOver: () => {
                 setThumb({
                     caption: child.props.children.props.title,
@@ -43,6 +43,6 @@ const Gallery = (props) => {
             <div className={style.gallery}>{thumbnails}</div>
         </figure>
     );
-};
+});
 
 export default Gallery;

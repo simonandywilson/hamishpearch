@@ -8,9 +8,9 @@ import style from "./slider.module.css";
 SwiperCore.use([Navigation, Pagination]);
 
 
-const Slider = (props) => {
+const Slider = React.forwardRef((props, ref) => {
     return (
-        <section className={style.section}>
+        <section className={style.section} ref={ref}>
             <div className={style.slider}>
                 <div className={style.sliderContainer}>
                     <Swiper
@@ -26,6 +26,6 @@ const Slider = (props) => {
             <div className={style.description}>{props.description}</div>
         </section>
     );
-};
+});
 
 export default Slider;

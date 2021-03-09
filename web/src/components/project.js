@@ -3,16 +3,25 @@ import style from "./project.module.css";
 import gsap from "gsap";
 
 const Project = React.forwardRef((props, ref) => {
+    // console.log(props.children[0]);
 
     // Variables for animated dom nodes
     let project = useRef(null);
     let cross = useRef(null);
-    let content = useRef(null);
+    let wrapper = useRef(null);
 
     const [state, setState] = useState({
         collapsed: true,
         name: "close",
     });
+
+    const childrenRef = useRef([]);
+
+    const content = React.Children.map(props.children, (child, index) =>
+        React.cloneElement(child, {
+            ref: (ref) => (childrenRef.current[index] = ref),
+        })
+    );
 
     const handleProject = () => {
         if (state.collapsed === true) {
@@ -46,13 +55,15 @@ const Project = React.forwardRef((props, ref) => {
                 position: "relative",
                 top: "unset",
             });
-            gsap.set(content, {
+            gsap.set(wrapper, {
                 display: "none",
-                autoAlpha: 0
             });
             gsap.to(cross, {
                 rotation: 45,
                 duration: 0.5,
+            });
+            gsap.to(childrenRef.current, {
+                autoAlpha: 0,
             });
         } else if (state.collapsed === false) {
             // Open Project
@@ -60,16 +71,17 @@ const Project = React.forwardRef((props, ref) => {
                 position: "sticky",
                 top: stickyOffset,
             });
-            gsap.set(content, {
+            gsap.set(wrapper, {
                 display: "block",
-            });
-            gsap.to(content, {
-                autoAlpha: 1,
-                duration: 1,
             });
             gsap.to(cross, {
                 rotation: 180,
                 duration: 0.5,
+            });
+            gsap.to(childrenRef.current, {
+                autoAlpha: 1,
+                duration: 0.5,
+                stagger: 0.25,
             });
         }
     });
@@ -92,11 +104,11 @@ const Project = React.forwardRef((props, ref) => {
                 <div>{props.location}</div>
                 <div>{props.date}</div>
             </td>
-            <td className={style.content} ref={(el) => (content = el)}>
-                {props.children}
+            <td className={style.wrapper} ref={(el) => (wrapper = el)}>
+                {content}
             </td>
         </tr>
     );
-    });
+});
 
 export default Project;

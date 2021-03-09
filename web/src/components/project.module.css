@@ -31,7 +31,7 @@ td {
     display: flex;
 }
 
-.content {
+.wrapper {
     display: none;
     width: 100%;
     grid-column: 1/-1;

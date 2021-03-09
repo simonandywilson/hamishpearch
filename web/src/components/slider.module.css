@@ -11,8 +11,6 @@ Slider
     display: grid;
     grid-template-columns: var(--three-column);
     padding-top: var(--padding);
-
-    /* visibility: hidden; */
 }
 
 .slider {
