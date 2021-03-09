@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import Header from "../components/header";
@@ -9,6 +9,7 @@ import Gallery from "../components/gallery";
 import Footer from "../components/footer";
 
 import Image from "gatsby-image";
+import gsap from "gsap";
 import { SwiperSlide } from "swiper/react";
 import "../styles/swiper.scss";
 import "../styles/navigation.scss";
@@ -21,14 +22,34 @@ const Home = () => {
 
     const [projectsActive, setProjectsActive] = useState(0);
 
+    // Add useRef to each <Project>
+    const projectRefs = useRef([]);
+    projectRefs.current = [];
+
+    const addToRefs = (el) => {
+        if (el && !projectRefs.current.includes(el)) {
+            projectRefs.current.push(el);
+        }
+    };
+
+    useEffect(() => {
+        gsap.to(projectRefs.current, {
+            autoAlpha: 1,
+            delay: 1,
+            duration: 2,
+            stagger: 0.5,
+        });
+    });
+
     return (
         <>
             <Header />
             <table>
                 <tbody>
-                    {projects.map((project) => {
+                    {projects.map((project, i) => {
                         return (
                             <Project
+                                ref={addToRefs}
                                 projectsActive={projectsActive}
                                 setProjectsActive={setProjectsActive}
                                 key={project._id}
@@ -45,11 +66,11 @@ const Home = () => {
                                         );
                                     })}
                                 </Slider>
-                                {project.images.map((image, index) => {
+                                {project.images.map((image, i) => {
                                     return (
                                         <Row
                                             key={image._key}
-                                            index={index + 1}
+                                            index={i + 1}
                                             length={project.images.length}
                                             title={image.title}
                                             materials={image.materials}

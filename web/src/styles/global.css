@@ -66,21 +66,3 @@ a:visited, a:active {
 a:hover {
   color: #ffffff;
 }
-
-
-
-/*
-.swiper-slide > img {
-  max-width: 100%;
-}
-
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: #000000!important;
-}
-
-.swiper-container-horizontal > .swiper-pagination-progressbar,
-.swiper-container-vertical > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
-  height: 1px!important;
-  bottom: 0!important;
-} */
-

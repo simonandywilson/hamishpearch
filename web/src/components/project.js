@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import style from "./project.module.css";
 import gsap from "gsap";
 
-const Project = (props) => {
+const Project = React.forwardRef((props, ref) => {
+
     // Variables for animated dom nodes
-    let projectContainer = useRef(null);
     let project = useRef(null);
     let cross = useRef(null);
     let content = useRef(null);
@@ -39,13 +39,7 @@ const Project = (props) => {
         );
         const padding = parseInt(getComputedStyle(document.body).getPropertyValue("--padding"), 10);
         const stickyOffset = padding * 2 + rowPadding;
-        // Initial fade in
-        gsap.to(projectContainer, {
-            autoAlpha: 1,
-            delay: 2,
-            duration: 2,
-            stagger: 0.2,
-        });
+
         if (state.collapsed === true) {
             // Close Project
             gsap.set(project, {
@@ -81,7 +75,7 @@ const Project = (props) => {
     });
 
     return (
-        <tr ref={(el) => (projectContainer = el)}>
+        <tr ref={ref}>
             <td
                 className={style.project}
                 onClick={handleProject}
@@ -103,6 +97,6 @@ const Project = (props) => {
             </td>
         </tr>
     );
-};
+    });
 
 export default Project;
