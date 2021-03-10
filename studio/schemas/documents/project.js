@@ -66,7 +66,7 @@ export default {
         {
             title: "Slider",
             name: "slider",
-            type: "gallery",
+            type: "slider",
             fieldset: "description",
         },
         // Description
@@ -112,11 +112,10 @@ export default {
         },
         prepare(selection) {
             const { title, slider, date } = selection;
-            console.log(title);
             return {
-                title: title === undefined ? "Project" : title,
-                media: slider[0],
-                subtitle: date.split("-")[0],
+                title: title ?? "Project",
+                media: slider?.[0]?.asset,
+                subtitle: date?.split("-")?.[0],
             };
         },
     },

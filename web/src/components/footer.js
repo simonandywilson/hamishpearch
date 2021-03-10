@@ -38,10 +38,6 @@ const Footer = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.projectsActive]);
 
-    // useEffect(() => {
-    //     console.log(state);
-    // }, [state]);
-
     const handleFooter = () => {
         // If collapsed & not disabled
         if (state.collapsed === true && state.disabled === false) {

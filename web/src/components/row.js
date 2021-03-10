@@ -3,7 +3,6 @@ import style from "./project.module.css";
 import Image from "gatsby-image";
 
 const Row = React.forwardRef((props, ref) => {
-
     const [aspect, setAspect] = useState(0);
 
     useEffect(() => {
@@ -14,6 +13,7 @@ const Row = React.forwardRef((props, ref) => {
         } else {
             setAspect(1);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

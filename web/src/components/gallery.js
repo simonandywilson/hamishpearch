@@ -6,7 +6,6 @@ const Gallery = React.forwardRef((props, ref) => {
     
     const thumbnails = React.Children.map(props.children, (child) =>
         React.cloneElement(child, {
-            // key:{},
             onMouseOver: () => {
                 setThumb({
                     caption: child.props.children.props.title,

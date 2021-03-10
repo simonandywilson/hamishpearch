@@ -1,23 +1,24 @@
 export default {
-    title: 'Image',
-    name: 'basic',
-    type: 'image',
-    fields: [{
+    title: "Image",
+    name: "basic",
+    type: "image",
+    fields: [
+        {
             title: "Title",
             name: "title",
             type: "string",
             options: {
-                isHighlighted: true
-            }
+                isHighlighted: true,
+            },
         },
         {
             title: "Alternative Text",
             name: "alt",
             type: "string",
-            description: "Important for SEO and accessiblity.",
+            description: "Important for SEO and accessibility.",
             options: {
-                isHighlighted: true
-            }
+                isHighlighted: true,
+            },
         },
     ],
-}
+};

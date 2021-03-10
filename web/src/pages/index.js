@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
+import SEO from "../components/seo";
 import Header from "../components/header";
 import Project from "../components/project";
 import Slider from "../components/slider";
@@ -43,6 +44,7 @@ const Home = () => {
 
     return (
         <>
+            <SEO />
             <Header />
             <table>
                 <tbody>
@@ -61,7 +63,7 @@ const Home = () => {
                                     {project.slider.map((image) => {
                                         return (
                                             <SwiperSlide key={image._key}>
-                                                <Image fluid={image.asset.fluid}/>
+                                                <Image fluid={image.asset.fluid} />
                                             </SwiperSlide>
                                         );
                                     })}

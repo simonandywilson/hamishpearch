@@ -1,8 +1,7 @@
 import createSchema from "part:@sanity/base/schema-creator"
 import schemaTypes from "all:part:@sanity/base/schema-type"
 
-import settings from "./documents/settings"
-import tags from "./objects/settings/tags"
+import seo from "./documents/seo"
 
 import about from "./documents/about"
 import cv from "./objects/about/cv"
@@ -12,17 +11,18 @@ import contact from "./objects/about/contact"
 import social from "./objects/about/social";
 
 import project from "./documents/project"
-import gallery from "./objects/project/gallery"
+import slider from "./objects/project/slider"
 import description from "./objects/project/description"
 import images from "./objects/project/images"
+import gallery from "./objects/project/gallery";
+
 import basic from "./objects/project/basic"
 import full from "./objects/project/full"
 
 export default createSchema({
     name: "mySchema",
     types: schemaTypes.concat([
-        settings,
-        tags,
+        seo,
 
         about,
         cv,
@@ -32,9 +32,11 @@ export default createSchema({
         social,
 
         project,
-        gallery,
+        slider,
         description,
         images,
+        gallery,
+
         basic,
         full,
     ]),

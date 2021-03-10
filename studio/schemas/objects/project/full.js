@@ -1,31 +1,32 @@
 export default {
-    title: 'Image',
-    name: 'full',
-    type: 'image',
-    fields: [{
+    title: "Image",
+    name: "full",
+    type: "image",
+    fields: [
+        {
             title: "Title",
             name: "title",
             type: "string",
             options: {
-                isHighlighted: true
-            }
+                isHighlighted: true,
+            },
         },
         {
             title: "Materials",
             name: "materials",
             type: "string",
             options: {
-                isHighlighted: true
-            }
+                isHighlighted: true,
+            },
         },
         {
             title: "Dimensions",
             name: "dimensions",
             type: "string",
-            description: "Seperate dimensions with ✕ rather than the letter x.",
+            description: "Seperate dimensions with × rather than the letter x.",
             options: {
-                isHighlighted: true
-            }
+                isHighlighted: true,
+            },
         },
         {
             title: "Date",
@@ -34,7 +35,7 @@ export default {
             options: {
                 isHighlighted: true,
                 dateFormat: "yyyy",
-            }
+            },
         },
         {
             title: "Image Size",
@@ -45,21 +46,18 @@ export default {
                 list: ["Small", "Large"],
                 layout: "radio",
                 direction: "horizontal",
-                isHighlighted: true
+                isHighlighted: true,
             },
-            validation: (Rule) => 
-                Rule.required().warning(
-                  `Image size is required.`
-                ),
+            validation: (Rule) => Rule.required().warning(`Image size is required.`),
         },
         {
             title: "Alternative Text",
             name: "alt",
             type: "string",
-            description: "Important for SEO and accessiblity.",
+            description: "Important for SEO and accessibility.",
             options: {
-                isHighlighted: true
-            }
+                isHighlighted: true,
+            },
         },
     ],
-}
+};

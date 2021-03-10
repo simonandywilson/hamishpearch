@@ -3,7 +3,6 @@ import style from "./project.module.css";
 import gsap from "gsap";
 
 const Project = React.forwardRef((props, ref) => {
-    // console.log(props.children[0]);
 
     // Variables for animated dom nodes
     let project = useRef(null);
