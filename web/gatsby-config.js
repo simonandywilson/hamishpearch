@@ -21,7 +21,7 @@ module.exports = {
             options: {
                 name: `Hamish Pearch`,
                 short_name: `Hamish Pearch`,
-                icon: `src/images/icon.png`,
+                icon: `src/images/favicon.svg`,
                 start_url: `/`,
                 background_color: `#ffffff`,
                 theme_color: `#ffffff`,

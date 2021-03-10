@@ -30,7 +30,8 @@ export default {
             title: "Social Banner",
             name: "banner",
             type: "image",
-            description: "Appears when website is shared on social media (Facebook, Twitter, LinkedIn, Slack etc.).",
+            description:
+                "Appears when website is shared on social media (Facebook, Twitter, LinkedIn, Slack etc.). Image will be cropped to 1200×630px",
         },
     ],
 };
