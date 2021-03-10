@@ -119,7 +119,7 @@ export default Home;
 
 const getData = graphql`
     {
-        allSanityProject {
+        allSanityProject(sort: { order: ASC }) {
             nodes {
                 _id
                 title
