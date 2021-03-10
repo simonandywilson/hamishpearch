@@ -3,7 +3,6 @@ tr {
     display: grid;
     grid-template-columns: 1fr;
     padding-bottom: var(--row-padding);
-
     visibility: hidden;
 }
 
@@ -12,7 +11,6 @@ tr:last-of-type {
 }
 
 td {
-    /* visibility: hidden; */
     vertical-align: top;
     padding: 0;
     margin: 0;
@@ -60,7 +58,6 @@ Project
     padding: 0;
     width: 100%;
     padding-bottom: var(--padding);
-    /* visibility: hidden; */
 }
 
 .section {
@@ -89,17 +86,21 @@ Images
 .image {
     width: 100%;
     display: grid;
-    grid-template-columns: var(--three-column);
+    grid-template-columns: var(--four-column);
 }
 
-.Small {
-    grid-column: 1 / 2;
-    margin-right: var(--padding);
-}
-
-.Large {
+.small {
     grid-column: 1 / 3;
     margin-right: var(--padding);
+}
+
+.large {
+    grid-column: 1 / 4;
+    margin-right: var(--padding);
+}
+
+.portrait {
+    grid-column: 1 / 2;
 }
 
 /* .portrait>img {

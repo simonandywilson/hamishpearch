@@ -4,11 +4,15 @@ import Image from "gatsby-image";
 
 const Row = React.forwardRef((props, ref) => {
     const [aspect, setAspect] = useState(0);
+    const [size, setSize] = useState(null);
+    const imgSize = props.size.toLowerCase();
 
     useEffect(() => {
-        if (props.aspectRatio > 1) {
+        if (props.aspectRatio > 1.1) {
+            setSize(imgSize);
             setAspect(1.5);
-        } else if (props.aspectRatio < 1) {
+        } else if (props.aspectRatio < 0.9) {
+            setSize("portrait");
             setAspect(0.66);
         } else {
             setAspect(1);
@@ -28,7 +32,7 @@ const Row = React.forwardRef((props, ref) => {
                 <div className={style.year}>{props.date}</div>
             </figcaption>
             <div className={style.image}>
-                <div className={style[props.size]}>
+                <div className={style[size]}>
                     <Image
                         alt={props.alt}
                         fluid={{
