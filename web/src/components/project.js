@@ -4,7 +4,10 @@ import gsap from "gsap";
 
 const Project = React.forwardRef((props, ref) => {
 
+    let children = props.children.filter(Boolean);
+
     // Variables for animated dom nodes
+    const childrenRef = useRef([]);
     let project = useRef(null);
     let cross = useRef(null);
     let wrapper = useRef(null);
@@ -14,9 +17,7 @@ const Project = React.forwardRef((props, ref) => {
         name: "close",
     });
 
-    const childrenRef = useRef([]);
-
-    const content = React.Children.map(props.children, (child, index) =>
+    const content = React.Children.map(children, (child, index) =>
         React.cloneElement(child, {
             ref: (ref) => (childrenRef.current[index] = ref),
         })
@@ -79,8 +80,8 @@ const Project = React.forwardRef((props, ref) => {
             });
             gsap.to(childrenRef.current, {
                 autoAlpha: 1,
-                duration: 0.5,
-                stagger: 0.25,
+                duration: 0.4,
+                stagger: 0.2,
             });
         }
     });
@@ -90,7 +91,6 @@ const Project = React.forwardRef((props, ref) => {
             <td
                 className={style.project}
                 onClick={handleProject}
-                // aria-expanded={state.collapsed}
                 role="presentation"
                 ref={(el) => (project = el)}
             >

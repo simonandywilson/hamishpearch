@@ -15,7 +15,7 @@ const Gallery = React.forwardRef((props, ref) => {
             },
         })
     );
-    
+
     const [thumb, setThumb] = useState({
         caption: thumbnails[0].props.children.props.title,
         preview: thumbnails[0].props.children.props.fluid,

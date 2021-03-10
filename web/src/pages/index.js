@@ -33,12 +33,13 @@ const Home = () => {
         }
     };
 
+    // Initial fade in
     useEffect(() => {
         gsap.to(projectRefs.current, {
             autoAlpha: 1,
-            delay: 1,
+            delay: 1.5,
             duration: 2,
-            stagger: 0.5,
+            stagger: 0.3,
         });
     });
 
@@ -86,22 +87,24 @@ const Home = () => {
                                     );
                                 })}
 
-                                <Gallery name={project.gallerytitle}>
-                                    {project.gallery.map((image) => {
-                                        return (
-                                            <div key={image._key}>
-                                                <Image
-                                                    title={image.title}
-                                                    alt={image.alt}
-                                                    fluid={{
-                                                        ...image.asset.fluid,
-                                                        aspectRatio: 1.5,
-                                                    }}
-                                                />
-                                            </div>
-                                        );
-                                    })}
-                                </Gallery>
+                                {project.gallery.length > 0 && 
+                                    <Gallery>
+                                        {project.gallery.map((image) => {
+                                            return (
+                                                <div key={image._key}>
+                                                    <Image
+                                                        title={image.title}
+                                                        alt={image.alt}
+                                                        fluid={{
+                                                            ...image.asset.fluid,
+                                                            aspectRatio: 1.5,
+                                                        }}
+                                                    />
+                                                </div>
+                                            );
+                                        })}
+                                    </Gallery>
+                                }
                             </Project>
                         );
                     })}
