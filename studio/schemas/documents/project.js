@@ -96,7 +96,7 @@ export default {
             type: "gallery",
             fieldset: "gallery",
         },
-        // Order projects
+        // Order fields,
         {
             name: "order",
             title: "Order",
