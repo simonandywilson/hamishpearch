@@ -3,7 +3,6 @@ import style from "./project.module.css";
 import gsap from "gsap";
 
 const Project = React.forwardRef((props, ref) => {
-
     let children = props.children.filter(Boolean);
 
     // Variables for animated dom nodes
@@ -41,6 +40,22 @@ const Project = React.forwardRef((props, ref) => {
         }
     };
 
+    const crossIn = () => {
+        if (state.collapsed === true) {
+            gsap.set(cross, {
+                autoAlpha: 1,
+            });
+        }
+    };
+
+    const crossOut = () => {
+        if (state.collapsed === true) {
+            gsap.set(cross, {
+                autoAlpha: 0,
+            });
+        }
+    };
+
     useEffect(() => {
         const rowPadding = parseInt(
             getComputedStyle(document.body).getPropertyValue("--row-padding"),
@@ -60,6 +75,7 @@ const Project = React.forwardRef((props, ref) => {
             });
             gsap.to(cross, {
                 rotation: 45,
+                autoAlpha: 0,
                 duration: 0.5,
             });
             gsap.to(childrenRef.current, {
@@ -74,6 +90,9 @@ const Project = React.forwardRef((props, ref) => {
             gsap.set(wrapper, {
                 display: "block",
             });
+            gsap.set(cross, {
+                autoAlpha: 1,
+            });
             gsap.to(cross, {
                 rotation: 180,
                 duration: 0.5,
@@ -87,13 +106,14 @@ const Project = React.forwardRef((props, ref) => {
     });
 
     return (
-        <tr ref={ref}>
-            <td
-                className={style.project}
-                onClick={handleProject}
-                role="presentation"
-                ref={(el) => (project = el)}
-            >
+        <tr
+            ref={ref}
+            onClick={handleProject}
+            onMouseEnter={crossIn}
+            onMouseLeave={crossOut}
+            onFocus={crossIn}
+        >
+            <td className={style.project} ref={(el) => (project = el)}>
                 <div className={style.title}>
                     <span className={style.padding}>{props.title}</span>
                     <span className={style.cross} ref={(el) => (cross = el)}>

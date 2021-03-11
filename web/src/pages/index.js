@@ -64,7 +64,10 @@ const Home = () => {
                                     {project.slider.map((image) => {
                                         return (
                                             <SwiperSlide key={image._key}>
-                                                <Image fluid={image.asset.fluid} />
+                                                <Image
+                                                    fluid={image.asset.fluid}
+                                                    durationFadeIn={1000}
+                                                />
                                             </SwiperSlide>
                                         );
                                     })}
@@ -99,6 +102,7 @@ const Home = () => {
                                                             ...image.asset.fluid,
                                                             aspectRatio: 1.5,
                                                         }}
+                                                        durationFadeIn={1000}
                                                     />
                                                 </div>
                                             );

@@ -4,6 +4,7 @@ tr {
     grid-template-columns: 1fr;
     padding-bottom: var(--row-padding);
     visibility: hidden;
+    cursor: crosshair;
 }
 
 tr:last-of-type {
@@ -20,7 +21,6 @@ td {
     display: grid;
     grid-template-columns: var(--three-column);
     grid-auto-rows: var(--row-height);
-    cursor: crosshair;
     user-select: none;
     z-index: 99;
 }
@@ -36,7 +36,7 @@ td {
 }
 
 .cross {
-    /* visibility: hidden; */
+    visibility: hidden;
     width: max-content;
     height: max-content;
     display: inline-block;
@@ -102,8 +102,3 @@ Images
 .portrait {
     grid-column: 1 / 2;
 }
-
-/* .portrait>img {
-  object-fit: contain;
-  object-position: 0% 50%;
-} */
