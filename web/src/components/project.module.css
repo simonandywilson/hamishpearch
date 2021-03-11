@@ -18,7 +18,7 @@ td {
 
 .project {
     display: grid;
-    grid-template-columns: var(--three-column);
+    grid-template-columns: var(--project-column);
     grid-auto-rows: var(--row-height);
     user-select: none;
     z-index: 99;
@@ -27,6 +27,14 @@ td {
 
 .title {
     display: flex;
+}
+
+.location {
+    display: var(--visibility);
+}
+
+.date {
+    justify-self: var(--justify);
 }
 
 .wrapper {
@@ -70,13 +78,19 @@ Project
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-columns: var(--five-column);
+    grid-template-columns: var(--figcaption-column);
     grid-auto-rows: minmax(var(--row-height), auto);
     padding-bottom: var(--figcaption-padding);
 }
 
 .materials {
-    padding-right: var(--padding);
+    padding-right: var(--materials-padding);
+    grid-column: var(--materials-span);
+}
+
+.year,
+.count  {
+    justify-self: var(--justify);
 }
 
 /*----------------------------------------
@@ -86,17 +100,17 @@ Images
 .image {
     width: 100%;
     display: grid;
-    grid-template-columns: var(--four-column);
+    grid-template-columns: var(--image-column);
 }
 
 .small {
     grid-column: 1 / 3;
-    margin-right: var(--padding);
+    margin-right: var(--image-padding);
 }
 
 .large {
     grid-column: 1 / 4;
-    margin-right: var(--padding);
+    margin-right: var(--image-padding);
 }
 
 .portrait {

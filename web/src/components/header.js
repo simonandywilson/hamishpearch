@@ -1,17 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+import style from "./header.module.css";
 import gsap from "gsap";
-
-const Container = styled.header`
-    position: fixed;
-    width: calc(100% - (var(--padding)) * 2);
-    margin: var(--padding);
-    z-index: 99;
-    display: grid;
-    grid-template-columns: var(--three-column);
-
-    visibility: hidden;
-`;
 
 const Header = () => {
     let header = useRef(null);
@@ -24,11 +13,11 @@ const Header = () => {
     });
 
     return (
-        <Container ref={(el) => (header = el)}>
+        <header className={style.header} ref={(el) => (header = el)}>
             <div>Title</div>
-            <div>Details</div>
-            <div>Year</div>
-        </Container>
+            <div className={style.details}>Details</div>
+            <div className={style.date}>Year</div>
+        </header>
     );
 };
 

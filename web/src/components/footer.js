@@ -128,7 +128,7 @@ const Footer = (props) => {
                 <div>{name}</div>
                 <div>{occupation}</div>
                 <div>{location}</div>
-                <div>{dob}</div>
+                <div className={style.dob}>{dob}</div>
                 <div className={style.plus} ref={(el) => (plus = el)}>
                     &#10005;
                 </div>
@@ -146,19 +146,19 @@ const Footer = (props) => {
                                                 {category.name_sub}
                                             </span>
                                         </div>
-                                        <div>
+                                        <div className={style.category}>
                                             {category.type}&nbsp;
                                             <span className={style.subtitle}>
                                                 {category.type_sub}
                                             </span>
                                         </div>
-                                        <div>
+                                        <div className={style.location}>
                                             {category.location}&nbsp;
                                             <span className={style.subtitle}>
                                                 {category.location_sub}
                                             </span>
                                         </div>
-                                        <div>
+                                        <div className={style.date}>
                                             {category.date}&nbsp;
                                             <span className={style.subtitle}>
                                                 {category.date_sub}

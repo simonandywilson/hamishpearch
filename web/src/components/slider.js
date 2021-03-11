@@ -1,12 +1,13 @@
 import React from "react";
-import SwiperCore, { Navigation, Pagination } from "swiper";
+import SwiperCore, { Navigation, Pagination, EffectFade } from "swiper";
+import PortableText from "@sanity/block-content-to-react";
 import { Swiper } from "swiper/react";
 import "../styles/swiper.scss";
 import "../styles/navigation.scss";
 import "../styles/pagination.scss";
+import "swiper/components/effect-fade/effect-fade.scss";
 import style from "./slider.module.css";
-SwiperCore.use([Navigation, Pagination]);
-
+SwiperCore.use([Navigation, Pagination, EffectFade]);
 
 const Slider = React.forwardRef((props, ref) => {
     return (
@@ -18,12 +19,17 @@ const Slider = React.forwardRef((props, ref) => {
                         pagination={{ type: "progressbar" }}
                         observer={"true"}
                         observeParents={"true"}
+                        effect="fade"
                     >
                         {props.children}
                     </Swiper>
                 </div>
             </div>
-            <div className={style.description}>{props.description}</div>
+            <PortableText
+                className={style.description}
+                blocks={props.description}
+                renderContainerOnSingleChild={true}
+            />
         </section>
     );
 });

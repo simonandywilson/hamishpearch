@@ -60,7 +60,7 @@ const Home = () => {
                                 location={project.location}
                                 date={project.date}
                             >
-                                <Slider description={project.description[0].children[0].text}>
+                                <Slider description={project._rawDescription}>
                                     {project.slider.map((image) => {
                                         return (
                                             <SwiperSlide key={image._key}>
@@ -140,11 +140,7 @@ const getData = graphql`
                         }
                     }
                 }
-                description {
-                    children {
-                        text
-                    }
-                }
+                _rawDescription
                 images {
                     _key
                     title

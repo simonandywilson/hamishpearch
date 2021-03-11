@@ -13,11 +13,22 @@
 .bio {
     display: grid;
     grid-row-gap: var(--plus-padding);
-    grid-template-columns: var(--four-column);
+    grid-template-columns: var(--bio-column);
     grid-auto-rows: var(--row-height);
     cursor: crosshair;
     padding-bottom: var(--padding);
     padding-top: var(--padding);
+}
+
+.dob {
+    justify-self: var(--justify);
+}
+
+.plus {
+    width: max-content;
+    height: max-content;
+    display: inline-block;
+    transform: rotate(45deg);
 }
 
 .about {
@@ -33,7 +44,7 @@
 .row {
     width: 100%;
     display: grid;
-    grid-template-columns: var(--four-column);
+    grid-template-columns: var(--row-column);
 }
 
 .subtitle {
@@ -50,9 +61,11 @@
     padding-top: var(--padding);
 }
 
-.plus {
-    width: max-content;
-    height: max-content;
-    display: inline-block;
-    transform: rotate(45deg);
+.category,
+.location {
+    display: var(--visibility)
+}
+
+.date {
+    justify-self: var(--justify);
 }

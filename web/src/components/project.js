@@ -122,8 +122,8 @@ const Project = React.forwardRef((props, ref) => {
                         &#10005;
                     </span>
                 </div>
-                <div>{props.location}</div>
-                <div>{props.date}</div>
+                <div className={style.location}>{props.location}</div>
+                <div className={style.date}>{props.date}</div>
             </td>
             <td className={style.wrapper} ref={(el) => (wrapper = el)}>
                 {content}

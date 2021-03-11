@@ -1,42 +1,40 @@
 {
-  "root": true,
-  "project": {
-    "name": "Hamish Pearch"
-  },
-  "api": {
-    "projectId": "39ib82ym",
-    "dataset": "production"
-  },
-  "plugins": [
-    "@sanity/base",
-    "@sanity/components",
-    "@sanity/default-layout",
-    "@sanity/default-login",
-    "@sanity/dashboard",
-    "@sanity/desk-tool",
-    "dashboard-widget-netlify",
-    "dashboard-widget-document-list",
-    "order-documents"
-  ],
-  "env": {
-    "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
-    }
-  },
-  "parts": [
-    {
-      "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema"
+    "root": true,
+    "project": {
+        "name": "Hamish Pearch"
     },
-    {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "./dashboardConfig.js"
+    "api": {
+        "projectId": "39ib82ym",
+        "dataset": "production"
     },
-    {
-      "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
-    }
-  ]
+    "plugins": [
+        "@sanity/base",
+        "@sanity/components",
+        "@sanity/default-layout",
+        "@sanity/default-login",
+        "@sanity/dashboard",
+        "@sanity/desk-tool",
+        "dashboard-widget-netlify",
+        "dashboard-widget-document-list",
+        "order-documents"
+    ],
+    "env": {
+        "development": {
+            "plugins": ["@sanity/vision"]
+        }
+    },
+    "parts": [
+        {
+            "name": "part:@sanity/base/schema",
+            "path": "./schemas/schema"
+        },
+        {
+            "implements": "part:@sanity/dashboard/config",
+            "path": "./dashboardConfig.js"
+        },
+        {
+            "name": "part:@sanity/desk-tool/structure",
+            "path": "./deskStructure.js"
+        }
+    ]
 }

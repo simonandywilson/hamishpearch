@@ -9,14 +9,14 @@ Slider
     width: 100%;
     padding-bottom: var(--padding);
     display: grid;
-    grid-template-columns: var(--three-column);
+    grid-template-columns: var(--slider-column);
     padding-top: var(--padding);
 }
 
 .slider {
     position: relative;
     padding-top: 66%;
-    margin-right: var(--padding);
+    margin-right: var(--image-padding);
     background: salmon;
 }
 
@@ -29,4 +29,13 @@ Slider
     right: 0;
     bottom: 0;
     background: #fafafa;
+}
+
+.description > p {
+    margin-top: var(--row-height);
+    margin-bottom: 0;
+}
+
+.description > p:first-child {
+    margin-top: var(--description-padding);
 }

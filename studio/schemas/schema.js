@@ -12,7 +12,7 @@ import social from "./objects/about/social";
 
 import project from "./documents/project"
 import slider from "./objects/project/slider"
-import description from "./objects/project/description"
+import description from "./objects/project/description";
 import images from "./objects/project/images"
 import gallery from "./objects/project/gallery";
 
