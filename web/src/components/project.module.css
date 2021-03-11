@@ -4,7 +4,6 @@ tr {
     grid-template-columns: 1fr;
     padding-bottom: var(--row-padding);
     visibility: hidden;
-    cursor: crosshair;
 }
 
 tr:last-of-type {
@@ -23,6 +22,7 @@ td {
     grid-auto-rows: var(--row-height);
     user-select: none;
     z-index: 99;
+    cursor: crosshair;
 }
 
 .title {

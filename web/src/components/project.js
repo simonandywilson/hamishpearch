@@ -106,14 +106,16 @@ const Project = React.forwardRef((props, ref) => {
     });
 
     return (
-        <tr
-            ref={ref}
-            onClick={handleProject}
-            onMouseEnter={crossIn}
-            onMouseLeave={crossOut}
-            onFocus={crossIn}
-        >
-            <td className={style.project} ref={(el) => (project = el)}>
+        <tr ref={ref}>
+            <td
+                className={style.project}
+                ref={(el) => (project = el)}
+                onClick={handleProject}
+                onMouseEnter={crossIn}
+                onMouseLeave={crossOut}
+                onFocus={crossIn}
+                role="presentation"
+            >
                 <div className={style.title}>
                     <span className={style.padding}>{props.title}</span>
                     <span className={style.cross} ref={(el) => (cross = el)}>
