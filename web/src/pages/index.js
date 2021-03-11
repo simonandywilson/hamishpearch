@@ -87,7 +87,7 @@ const Home = () => {
                                     );
                                 })}
 
-                                {project.gallery.length > 0 && 
+                                {project.gallery.length > 0 && (
                                     <Gallery>
                                         {project.gallery.map((image) => {
                                             return (
@@ -104,7 +104,7 @@ const Home = () => {
                                             );
                                         })}
                                     </Gallery>
-                                }
+                                )}
                             </Project>
                         );
                     })}
@@ -119,9 +119,10 @@ export default Home;
 
 const getData = graphql`
     {
-        allSanityProject {
+        allSanityProject(sort: { fields: [order], order: ASC }) {
             nodes {
                 _id
+                order
                 title
                 location
                 date(formatString: "YYYY")
