@@ -118,6 +118,10 @@ table {
 Typography
 ----------------------------------------*/
 
+p {
+    white-space: pre-wrap;
+}
+
 .times {
     font-family: times;
     font-size: var(--font-size-times);
