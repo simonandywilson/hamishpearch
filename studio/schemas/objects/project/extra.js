@@ -1,8 +1,16 @@
 export default {
     title: "Image",
-    name: "basic",
+    name: "extra",
     type: "image",
     fields: [
+        {
+            title: "Title",
+            name: "title",
+            type: "string",
+            options: {
+                isHighlighted: true,
+            },
+        },
         {
             title: "Alternative Text",
             name: "alt",
@@ -14,18 +22,4 @@ export default {
             validation: (Rule) => Rule.required().warning(`Image alt is required.`),
         },
     ],
-    preview: {
-        select: {
-            media: "asset",
-            subtitle: "alt",
-        },
-        prepare(selection) {
-            const { media, subtitle } = selection;
-            return {
-                title: "Installation View",
-                media: media,
-                subtitle: subtitle,
-            };
-        },
-    },
 };

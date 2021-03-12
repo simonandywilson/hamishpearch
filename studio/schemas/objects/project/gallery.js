@@ -3,6 +3,6 @@ export default {
     name: "gallery",
     type: "array",
     of: [{
-        type: "basic",
+        type: "extra",
     }],
 }

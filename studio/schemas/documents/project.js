@@ -74,6 +74,8 @@ export default {
             title: "Description",
             name: "description",
             type: "description",
+            description:
+                "Use Shift+Return to add a line break without adding paragraph formatting and spacing.",
             fieldset: "description",
         },
         // Images

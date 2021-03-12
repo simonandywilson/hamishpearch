@@ -17,6 +17,7 @@ import images from "./objects/project/images"
 import gallery from "./objects/project/gallery";
 
 import basic from "./objects/project/basic"
+import extra from "./objects/project/extra";
 import full from "./objects/project/full"
 
 export default createSchema({
@@ -38,6 +39,7 @@ export default createSchema({
         gallery,
 
         basic,
+        extra,
         full,
     ]),
 });

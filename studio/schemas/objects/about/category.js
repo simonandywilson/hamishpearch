@@ -8,6 +8,7 @@ export default {
         {
             title: "Name",
             name: "name",
+            description: "Column 1.",
             options: {
                 columns: 2,
             },
@@ -15,6 +16,7 @@ export default {
         {
             title: "Type",
             name: "type",
+            description: "Column 2 (Hidden on mobile).",
             options: {
                 columns: 2,
             },
@@ -22,6 +24,7 @@ export default {
         {
             title: "Location",
             name: "location",
+            description: "Column 3 (Hidden on mobile).",
             options: {
                 columns: 2,
             },
@@ -29,9 +32,7 @@ export default {
         {
             title: "Date",
             name: "date",
-            options: {
-                columns: 2,
-            },
+            description: "Column 4.",
         },
     ],
     fields: [
@@ -44,6 +45,12 @@ export default {
         {
             title: "Subtitle",
             name: "name_sub",
+            type: "string",
+            fieldset: "name",
+        },
+        {
+            title: "Link",
+            name: "name_link",
             type: "string",
             fieldset: "name",
         },
@@ -60,6 +67,12 @@ export default {
             type: "string",
             fieldset: "type",
         },
+        {
+            title: "Link",
+            name: "type_link",
+            type: "string",
+            fieldset: "type",
+        },
 
         {
             title: "Title",
@@ -73,16 +86,16 @@ export default {
             type: "string",
             fieldset: "location",
         },
+        {
+            title: "Link",
+            name: "location_link",
+            type: "string",
+            fieldset: "location",
+        },
 
         {
             title: "Title",
             name: "date",
-            type: "string",
-            fieldset: "date",
-        },
-        {
-            title: "Subtitle",
-            name: "date_sub",
             type: "string",
             fieldset: "date",
         },

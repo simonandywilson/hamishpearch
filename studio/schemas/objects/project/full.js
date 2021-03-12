@@ -58,6 +58,22 @@ export default {
             options: {
                 isHighlighted: true,
             },
+            validation: (Rule) => Rule.required().warning(`Image alt is required.`),
         },
     ],
+    preview: {
+        select: {
+            title: "title",
+            media: "asset",
+            subtitle: "size",
+        },
+        prepare(selection) {
+            const { title, media, subtitle } = selection;
+            return {
+                title: title,
+                media: media,
+                subtitle: subtitle,
+            };
+        },
+    },
 };
