@@ -9,7 +9,25 @@ import "swiper/components/effect-fade/effect-fade.scss";
 import style from "./slider.module.css";
 SwiperCore.use([Navigation, Pagination]);
 
+const overrides = {
+    times: (props) => <p className="times" {...props} />,
+};
+
+const serializers = {
+    types: {
+        block: (props) =>
+            // Check if we have an override for the “style”
+            overrides[props.node.style]
+                ? // if so, call the function and pass in the children, ignoring
+                  // the other unnecessary props
+                  overrides[props.node.style]({ children: props.children })
+                : // otherwise, fallback to the provided default with all props
+                  PortableText.defaultSerializers.types.block(props),
+    },
+};
+
 const Slider = React.forwardRef((props, ref) => {
+    console.log(props.description);
     return (
         <section className={style.section} ref={ref}>
             <div className={style.slider}>
@@ -28,6 +46,7 @@ const Slider = React.forwardRef((props, ref) => {
                 className={style.description}
                 blocks={props.description}
                 renderContainerOnSingleChild={true}
+                serializers={serializers}
             />
         </section>
     );

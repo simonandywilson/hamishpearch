@@ -5,6 +5,7 @@ Variables
 @media only screen and (max-width: 449px) {
     :root {
         --font-size: 0.75rem;
+        --font-size-times: 0.85rem;
         --subtitle: 0.65rem;
         --smallcaps-font-size: 0.9rem;
         --line-height: 1rem;
@@ -44,6 +45,7 @@ Variables
 @media only screen and (min-width: 450px) {
     :root {
         --font-size: 0.75rem;
+        --font-size-times: 0.85rem;
         --subtitle: 0.65rem;
         --smallcaps-font-size: 0.9rem;
         --line-height: 1rem;
@@ -115,6 +117,12 @@ table {
 /*----------------------------------------
 Typography
 ----------------------------------------*/
+
+.times {
+    font-family: times;
+    font-size: var(--font-size-times);
+    line-height: var(--line-height);
+}
 
 a {
     width: max-content;
