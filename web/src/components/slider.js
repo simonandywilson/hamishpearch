@@ -1,5 +1,5 @@
 import React from "react";
-import SwiperCore, { Navigation, Pagination, EffectFade } from "swiper";
+import SwiperCore, { Navigation, Pagination } from "swiper";
 import PortableText from "@sanity/block-content-to-react";
 import { Swiper } from "swiper/react";
 import "../styles/swiper.scss";
@@ -7,7 +7,7 @@ import "../styles/navigation.scss";
 import "../styles/pagination.scss";
 import "swiper/components/effect-fade/effect-fade.scss";
 import style from "./slider.module.css";
-SwiperCore.use([Navigation, Pagination, EffectFade]);
+SwiperCore.use([Navigation, Pagination]);
 
 const Slider = React.forwardRef((props, ref) => {
     return (
@@ -19,7 +19,6 @@ const Slider = React.forwardRef((props, ref) => {
                         pagination={{ type: "progressbar" }}
                         observer={"true"}
                         observeParents={"true"}
-                        effect="fade"
                     >
                         {props.children}
                     </Swiper>

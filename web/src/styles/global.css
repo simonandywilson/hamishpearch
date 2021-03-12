@@ -9,10 +9,10 @@ Variables
         --smallcaps-font-size: 0.9rem;
         --line-height: 1rem;
 
-        --row-height: 12px;
+        --row-height: 13px;
         --row-padding: 10px;
 
-        --padding: 12px;
+        --padding: 13px;
         --figcaption-padding: 5px;
         --plus-padding: 10px;
 
@@ -94,7 +94,6 @@ Main
 
 html body {
     position: absolute;
-    min-height: 100vh;
     width: 100vw;
     margin: 0;
     padding: 0;
