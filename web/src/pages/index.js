@@ -132,7 +132,6 @@ const getData = graphql`
                 date(formatString: "YYYY")
                 slider {
                     _key
-                    title
                     alt
                     asset {
                         fluid(maxWidth: 1000) {

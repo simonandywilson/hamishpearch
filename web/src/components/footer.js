@@ -138,32 +138,74 @@ const Footer = (props) => {
                     return (
                         <section className={style.section} key={categories._key}>
                             {categories.content.map((category) => {
+                               
+                                const name = () => {
+                                    if (category.name_link === null) {
+                                        return <>{category.name}</>;
+                                    } else {
+                                        return (
+                                            <a
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                href={category.name_link}
+                                            >
+                                                {category.name}
+                                            </a>
+                                        );
+                                    } 
+                                };
+                                const type = () => {
+                                    if (category.type_link === null) {
+                                        return <>{category.type}</>;
+                                    } else {
+                                        return (
+                                            <a
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                href={category.type_link}
+                                            >
+                                                {category.type}
+                                            </a>
+                                        );
+                                    }
+                                };
+                                const location = () => {
+                                    if (category.location_link === null) {
+                                        return <>{category.location}</>;
+                                    } else {
+                                        return (
+                                            <a
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                href={category.location_link}
+                                            >
+                                                {category.location}
+                                            </a>
+                                        );
+                                    }
+                                };
+
                                 return (
                                     <div className={style.row} key={category._key}>
-                                        <div>
-                                            {category.name}&nbsp;
+                                        <div className={style.name}>
+                                            {name()}
                                             <span className={style.subtitle}>
-                                                {category.name_sub}
+                                                &nbsp;{category.name_sub}
                                             </span>
                                         </div>
-                                        <div className={style.category}>
-                                            {category.type}&nbsp;
+                                        <div className={style.type}>
+                                            {type()}
                                             <span className={style.subtitle}>
-                                                {category.type_sub}
+                                                &nbsp;{category.type_sub}
                                             </span>
                                         </div>
                                         <div className={style.location}>
-                                            {category.location}&nbsp;
+                                            {location()}
                                             <span className={style.subtitle}>
-                                                {category.location_sub}
+                                                &nbsp;{category.location_sub}
                                             </span>
                                         </div>
-                                        <div className={style.date}>
-                                            {category.date}&nbsp;
-                                            <span className={style.subtitle}>
-                                                {category.date_sub}
-                                            </span>
-                                        </div>
+                                        <div className={style.date}>{category.date}</div>
                                     </div>
                                 );
                             })}
@@ -204,12 +246,14 @@ const getData = graphql`
                     _key
                     name
                     name_sub
+                    name_link
                     type
                     type_sub
+                    type_link
                     location
                     location_sub
+                    location_link
                     date
-                    date_sub
                 }
             }
             contact {

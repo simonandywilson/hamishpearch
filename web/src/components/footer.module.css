@@ -61,7 +61,7 @@
     padding-top: var(--padding);
 }
 
-.category,
+.type,
 .location {
     display: var(--visibility)
 }
