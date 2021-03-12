@@ -17,7 +17,6 @@ Slider
     position: relative;
     padding-top: 66%;
     margin-right: var(--image-padding);
-    background: salmon;
 }
 
 .sliderContainer {
@@ -31,11 +30,32 @@ Slider
     background: #fafafa;
 }
 
-.description > p {
+.expand {
+    width: max-content;
+    cursor: crosshair;
+    margin-top: var(--expand-padding);
+}
+
+.arrow {
+    display: inline-block;
+}
+
+.textContainer {
+    /* height: 0; */
+    overflow: hidden;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.text > p {
     margin-top: var(--row-height);
     margin-bottom: 0;
 }
 
-.description > p:first-child {
+.text > p:first-child {
     margin-top: var(--description-padding);
 }

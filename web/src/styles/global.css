@@ -2,7 +2,7 @@
 Variables
 ----------------------------------------*/
 
-@media only screen and (max-width: 449px) {
+@media only screen and (max-width: 799px) {
     :root {
         --font-size: 0.75rem;
         --font-size-times: 0.85rem;
@@ -18,6 +18,7 @@ Variables
         --plus-padding: 10px;
 
         --visibility: none;
+        --visibility-alt: block;
         --justify: end;
 
         --three-column: 1fr 1fr 0.3fr;
@@ -29,6 +30,7 @@ Variables
         --project-column: var(--two-column);
         
         --slider-column: var(--one-column);
+        --expand-padding: var(--padding);
         --description-padding: var(--padding);
 
         --figcaption-column: var(--two-column-alt);
@@ -42,7 +44,7 @@ Variables
     }
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 800px) {
     :root {
         --font-size: 0.75rem;
         --font-size-times: 0.85rem;
@@ -58,6 +60,7 @@ Variables
         --plus-padding: 10px;
 
         --visibility: block;
+        --visibility-alt: none;
         --justify: start;
 
         --header-column: var(--three-column);
@@ -66,6 +69,7 @@ Variables
         --justify: start;
 
         --slider-column: var(--three-column);
+        --expand-padding: 0;
         --description-padding: 0;
 
         --figcaption-column: var(--five-column);
