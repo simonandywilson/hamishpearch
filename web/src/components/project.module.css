@@ -88,8 +88,8 @@ Project
     grid-column: var(--materials-span);
 }
 
-.year,
-.count  {
+.count,
+.year  {
     justify-self: var(--justify);
 }
 
