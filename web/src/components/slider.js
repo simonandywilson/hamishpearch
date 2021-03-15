@@ -38,7 +38,6 @@ const Slider = React.forwardRef((props, ref) => {
         portrait: null,
         collapsed: null,
     });
-    console.log(state);
 
     // Initial setup/on resize
     useEffect(() => {
@@ -92,7 +91,6 @@ const Slider = React.forwardRef((props, ref) => {
 
     // On click
     function expandDescription() {
-        alert("clicked")
         // Check if portrait
         if (state.landscape === false && state.portrait === true) {
             // If collapsed
@@ -125,10 +123,10 @@ const Slider = React.forwardRef((props, ref) => {
 
         if (state.initial === false) {
             if (state.collapsed === true && state.portrait === true) {
-                gsap.set(textContainer, {
-                    height: "auto",
-                });
-                gsap.set(textContainer, {
+                // gsap.set(textContainer, {
+                //     height: "auto",
+                // });
+                gsap.to(textContainer, {
                     height: 0,
                     duration: 1,
                     ease: "Power3.easeOut",
@@ -141,11 +139,11 @@ const Slider = React.forwardRef((props, ref) => {
                 gsap.set(textContainer, {
                     height: "auto",
                 });
-                // gsap.from(textContainer, {
-                //     height: 0,
-                //     duration: 1,
-                //     ease: "Power3.easeOut",
-                // });
+                gsap.from(textContainer, {
+                    height: 0,
+                    duration: 1,
+                    ease: "Power3.easeOut",
+                });
                 gsap.to(cross, {
                     rotation: 180,
                     duration: 0.5,
