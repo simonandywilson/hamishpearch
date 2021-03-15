@@ -81,14 +81,14 @@ const Slider = React.forwardRef((props, ref) => {
     }, [state.initial]);
 
     // Resize/init event listener
-    useEffect(() => {
-        function windowWidth() {
-            setState({ ...state, initial: true });
-        }
-        window.addEventListener("resize", windowWidth);
-        return () => window.removeEventListener("resize", windowWidth);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // useEffect(() => {
+    //     function windowWidth() {
+    //         setState({ ...state, initial: true });
+    //     }
+    //     window.addEventListener("resize", windowWidth);
+    //     return () => window.removeEventListener("resize", windowWidth);
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
     // On click
     function expandDescription() {
