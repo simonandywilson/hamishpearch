@@ -38,6 +38,7 @@ const Slider = React.forwardRef((props, ref) => {
         portrait: null,
         collapsed: null,
     });
+    console.log(state);
 
     // Initial setup/on resize
     useEffect(() => {
@@ -76,6 +77,7 @@ const Slider = React.forwardRef((props, ref) => {
                 });
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.initial]);
 
     // Resize/init event listener
@@ -85,10 +87,12 @@ const Slider = React.forwardRef((props, ref) => {
         }
         window.addEventListener("resize", windowWidth);
         return () => window.removeEventListener("resize", windowWidth);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // On click
     function expandDescription() {
+        alert("clicked")
         // Check if portrait
         if (state.landscape === false && state.portrait === true) {
             // If collapsed
