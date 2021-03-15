@@ -104,7 +104,7 @@ const Slider = React.forwardRef((props, ref) => {
             gsap.set(textContainer, {
                 height: "auto",
             });
-            gsap.to(textContainer, {
+            gsap.set(textContainer, {
                 height: 0,
                 duration: 1,
                 ease: "Power3.easeOut",
@@ -116,11 +116,11 @@ const Slider = React.forwardRef((props, ref) => {
             gsap.set(textContainer, {
                 height: "auto",
             });
-            gsap.fromTo(
-                textContainer,
-                { height: 0 },
-                { height: "auto", duration: 1, ease: "Power3.easeOut" }
-            );
+            // gsap.from(textContainer, {
+            //     height: 0,
+            //     duration: 1,
+            //     ease: "Power3.easeOut",
+            // });
             gsap.set(arrow, {
                 rotate: 180,
             });
