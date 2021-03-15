@@ -36,7 +36,11 @@ Slider
     margin-top: var(--expand-padding);
 }
 
-.arrow {
+.padding {
+    padding-right: var(--padding);
+}
+
+.cross {
     display: inline-block;
 }
 

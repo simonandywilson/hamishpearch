@@ -83,7 +83,6 @@ const Footer = (props) => {
             });
             gsap.set(about, {
                 height: "auto",
-                ease: "Power3.easeOut",
             });
             gsap.from(about, {
                 height: 0,
@@ -103,19 +102,25 @@ const Footer = (props) => {
                 ease: "Power3.easeOut",
             });
         } else if (state.collapsed === false && state.disabled === true) {
-            gsap.to(footer, {
-                paddingBottom: 0,
-                bottom: -Math.abs(footerOffset),
-                duration: 1,
-                ease: "Power3.easeOut",
+            const timeline = gsap.timeline({
+                onComplete: setState({ ...state, collapsed: true, name: "close" }),
             });
-            gsap.to(about, {
+            timeline.set(about, {
+                height: "auto",
+            });
+            timeline.to(about, {
                 height: 0,
                 duration: 1,
                 ease: "Power3.easeOut",
             });
-            gsap.to(plus, {
+            timeline.to(plus, {
                 rotate: 45,
+                duration: 1,
+                ease: "Power3.easeOut",
+            },"<");
+            timeline.to(footer, {
+                paddingBottom: 0,
+                bottom: -Math.abs(footerOffset),
                 duration: 1,
                 ease: "Power3.easeOut",
             });
@@ -138,7 +143,6 @@ const Footer = (props) => {
                     return (
                         <section className={style.section} key={categories._key}>
                             {categories.content.map((category) => {
-                               
                                 const name = () => {
                                     if (category.name_link === null) {
                                         return <>{category.name}</>;
@@ -152,7 +156,7 @@ const Footer = (props) => {
                                                 {category.name}
                                             </a>
                                         );
-                                    } 
+                                    }
                                 };
                                 const type = () => {
                                     if (category.type_link === null) {

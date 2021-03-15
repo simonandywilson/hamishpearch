@@ -30,13 +30,62 @@ const serializers = {
 const Slider = React.forwardRef((props, ref) => {
     let expand = useRef(null);
     let textContainer = useRef(null);
-    let arrow = useRef(null);
+    let cross = useRef(null);
 
     const [state, setState] = useState({
+        initial: true,
         landscape: null,
         portrait: null,
         collapsed: null,
     });
+
+    // Initial setup/on resize
+    useEffect(() => {
+        if (state.initial === true) {
+            if (window.innerWidth <= 799) {
+                const timeline = gsap.timeline({
+                    onComplete: setState({
+                        initial: false,
+                        landscape: false,
+                        portrait: true,
+                        collapsed: true,
+                    }),
+                });
+                // Portait
+                timeline.set(expand, {
+                    display: "block",
+                });
+                timeline.set(textContainer, {
+                    height: 0,
+                });
+            } else if (window.innerWidth >= 800) {
+                // Landscape
+                const timeline = gsap.timeline({
+                    onComplete: setState({
+                        initial: false,
+                        landscape: true,
+                        portrait: false,
+                        collapsed: false,
+                    }),
+                });
+                timeline.set(expand, {
+                    display: "none",
+                });
+                timeline.set(textContainer, {
+                    height: "auto",
+                });
+            }
+        }
+    }, [state.initial]);
+
+    // Resize/init event listener
+    useEffect(() => {
+        function windowWidth() {
+            setState({ ...state, initial: true });
+        }
+        window.addEventListener("resize", windowWidth);
+        return () => window.removeEventListener("resize", windowWidth);
+    }, []);
 
     // On click
     function expandDescription() {
@@ -52,78 +101,52 @@ const Slider = React.forwardRef((props, ref) => {
         }
     }
 
-    // Resize event listener
-    useEffect(() => {
-        function windowWidth() {
-            if (window.innerWidth <= 799) {
-                // Portait
-                setState({ landscape: false, portrait: true, collapsed: true });
-                // gsap.set(expand, {
-                //     display: "block",
-                // });
-                // gsap.set(textContainer, {
-                //     height: 0,
-                // });
-            } else if (window.innerWidth >= 800) {
-                // Landscape
-                setState({ landscape: true, portrait: false, collapsed: false });
-                // gsap.set(expand, {
-                //     display: "none",
-                // });
-                // gsap.set(textContainer, {
-                //     height: "auto",
-                // });
-            }
-        }
-        window.addEventListener("resize", windowWidth);
-        windowWidth();
-        return () => window.removeEventListener("resize", windowWidth);
-    }, []);
-
     // Set position on state change
     useEffect(() => {
-        if (state.landscape === true) {
-            gsap.set(expand, {
-                display: "none",
-            });
-            gsap.set(textContainer, {
-                height: "auto",
-            });
-        } else if (state.portrait === true) {
-            gsap.set(expand, {
-                display: "block",
-            });
-            gsap.set(textContainer, {
-                height: 0,
-            });
-        }
+        // if (state.landscape === true) {
+        //     gsap.set(expand, {
+        //         display: "none",
+        //     });
+        //     gsap.set(textContainer, {
+        //         height: "auto",
+        //     });
+        // } else if (state.portrait === true) {
+        //     gsap.set(expand, {
+        //         display: "block",
+        //     });
+        //     gsap.set(textContainer, {
+        //         height: 0,
+        //     });
+        // }
 
-
-
-        if (state.collapsed === true && state.portrait === true) {
-            gsap.set(textContainer, {
-                height: "auto",
-            });
-            gsap.set(textContainer, {
-                height: 0,
-                duration: 1,
-                ease: "Power3.easeOut",
-            });
-            gsap.set(arrow, {
-                rotate: 0,
-            });
-        } else if (state.collapsed === false && state.portrait === true) {
-            gsap.set(textContainer, {
-                height: "auto",
-            });
-            // gsap.from(textContainer, {
-            //     height: 0,
-            //     duration: 1,
-            //     ease: "Power3.easeOut",
-            // });
-            gsap.set(arrow, {
-                rotate: 180,
-            });
+        if (state.initial === false) {
+            if (state.collapsed === true && state.portrait === true) {
+                gsap.set(textContainer, {
+                    height: "auto",
+                });
+                gsap.set(textContainer, {
+                    height: 0,
+                    duration: 1,
+                    ease: "Power3.easeOut",
+                });
+                gsap.to(cross, {
+                    rotation: 45,
+                    duration: 0.5,
+                });
+            } else if (state.collapsed === false && state.portrait === true) {
+                gsap.set(textContainer, {
+                    height: "auto",
+                });
+                // gsap.from(textContainer, {
+                //     height: 0,
+                //     duration: 1,
+                //     ease: "Power3.easeOut",
+                // });
+                gsap.to(cross, {
+                    rotation: 180,
+                    duration: 0.5,
+                });
+            }
         }
     });
 
@@ -148,9 +171,9 @@ const Slider = React.forwardRef((props, ref) => {
                     role="presentation"
                     ref={(el) => (expand = el)}
                 >
-                    Description&nbsp;
-                    <span className={style.arrow} ref={(el) => (arrow = el)}>
-                        &#9662;
+                    <span className={style.padding}>Description</span>
+                    <span className={style.cross} ref={(el) => (cross = el)}>
+                        &#10005;
                     </span>
                 </div>
                 <div className={style.textContainer} ref={(el) => (textContainer = el)}>
