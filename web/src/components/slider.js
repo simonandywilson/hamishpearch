@@ -55,12 +55,24 @@ const Slider = React.forwardRef((props, ref) => {
     // Resize event listener
     useEffect(() => {
         function windowWidth() {
-            if (window.innerWidth < 800) {
+            if (window.innerWidth <= 799) {
                 // Portait
                 setState({ landscape: false, portrait: true, collapsed: true });
-            } else if (window.innerWidth > 800) {
+                // gsap.set(expand, {
+                //     display: "block",
+                // });
+                // gsap.set(textContainer, {
+                //     height: 0,
+                // });
+            } else if (window.innerWidth >= 800) {
                 // Landscape
                 setState({ landscape: true, portrait: false, collapsed: false });
+                // gsap.set(expand, {
+                //     display: "none",
+                // });
+                // gsap.set(textContainer, {
+                //     height: "auto",
+                // });
             }
         }
         window.addEventListener("resize", windowWidth);
@@ -68,7 +80,7 @@ const Slider = React.forwardRef((props, ref) => {
         return () => window.removeEventListener("resize", windowWidth);
     }, []);
 
-    // Set position on init/resize
+    // Set position on state change
     useEffect(() => {
         if (state.landscape === true) {
             gsap.set(expand, {
@@ -84,34 +96,36 @@ const Slider = React.forwardRef((props, ref) => {
             gsap.set(textContainer, {
                 height: 0,
             });
-            if (state.collapsed === true) {
-                gsap.set(textContainer, {
-                    height: "auto",
-                });
-                gsap.to(textContainer, {
-                    height: 0,
-                    duration: 1,
-                    ease: "Power3.easeOut",
-                });
-                gsap.set(arrow, {
-                    rotate: 0,
-                });
-            } else if (state.collapsed === false) {
-                gsap.set(textContainer, {
-                    height: "auto",
-                });
-                gsap.fromTo(
-                    textContainer,
-                    { height: 0 },
-                    { height: "auto", duration: 1, ease: "Power3.easeOut" }
-                );
-                gsap.set(arrow, {
-                    rotate: 180,
-                });
-            };
-        };
+        }
+
+
+
+        if (state.collapsed === true && state.portrait === true) {
+            gsap.set(textContainer, {
+                height: "auto",
+            });
+            gsap.to(textContainer, {
+                height: 0,
+                duration: 1,
+                ease: "Power3.easeOut",
+            });
+            gsap.set(arrow, {
+                rotate: 0,
+            });
+        } else if (state.collapsed === false && state.portrait === true) {
+            gsap.set(textContainer, {
+                height: "auto",
+            });
+            gsap.fromTo(
+                textContainer,
+                { height: 0 },
+                { height: "auto", duration: 1, ease: "Power3.easeOut" }
+            );
+            gsap.set(arrow, {
+                rotate: 180,
+            });
+        }
     });
-    
 
     return (
         <section className={style.section} ref={ref}>

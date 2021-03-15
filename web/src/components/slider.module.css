@@ -41,15 +41,16 @@ Slider
 }
 
 .textContainer {
-    /* height: 0; */
     overflow: hidden;
 }
 
-.text {
+/* .text {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
+    flex: 1;
+} */
 
 .text > p {
     margin-top: var(--row-height);

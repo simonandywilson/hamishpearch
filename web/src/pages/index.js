@@ -50,6 +50,7 @@ const Home = () => {
             <table>
                 <tbody>
                     {projects.map((project, i) => {
+
                         return (
                             <Project
                                 ref={addToRefs}
@@ -91,7 +92,7 @@ const Home = () => {
                                 })}
 
                                 {project.gallery.length > 0 && (
-                                    <Gallery>
+                                    <Gallery name={project.gallerytitle}>
                                         {project.gallery.map((image) => {
                                             return (
                                                 <div key={image._key}>
