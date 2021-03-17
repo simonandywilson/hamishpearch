@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import style from "./footer.module.css";
+import style from "../styles/footer.module.css";
 import gsap from "gsap";
 
 const Footer = (props) => {
@@ -9,6 +9,7 @@ const Footer = (props) => {
     } = useStaticQuery(getData);
 
     let footer = useRef(null);
+    let bio = useRef(null);
     let about = useRef(null);
     let plus = useRef(null);
 
@@ -73,6 +74,9 @@ const Footer = (props) => {
                 duration: 1,
                 ease: "Power3.easeOut",
             });
+            gsap.set(bio, {
+                cursor: "pointer",
+            });
         } else if (state.collapsed === false && state.disabled === false) {
             // Open Footer
             gsap.to(footer, {
@@ -94,12 +98,18 @@ const Footer = (props) => {
                 duration: 1,
                 ease: "Power3.easeOut",
             });
+            gsap.set(bio, {
+                cursor: "pointer",
+            });
         } else if (state.collapsed === true && state.disabled === true) {
             gsap.to(footer, {
                 paddingBottom: 0,
                 bottom: -Math.abs(footerOffset),
                 duration: 1,
                 ease: "Power3.easeOut",
+            });
+            gsap.set(bio, {
+                cursor: "default",
             });
         } else if (state.collapsed === false && state.disabled === true) {
             const timeline = gsap.timeline({
@@ -113,23 +123,36 @@ const Footer = (props) => {
                 duration: 1,
                 ease: "Power3.easeOut",
             });
-            timeline.to(plus, {
-                rotate: 45,
-                duration: 1,
-                ease: "Power3.easeOut",
-            },"<");
+            timeline.to(
+                plus,
+                {
+                    rotate: 45,
+                    duration: 1,
+                    ease: "Power3.easeOut",
+                },
+                "<"
+            );
             timeline.to(footer, {
                 paddingBottom: 0,
                 bottom: -Math.abs(footerOffset),
                 duration: 1,
                 ease: "Power3.easeOut",
             });
+            timeline.set(bio, {
+                cursor: "default",
+            });
         }
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state.collapsed, state.disabled]);
 
     return (
         <footer className={style.footer} ref={(el) => (footer = el)}>
-            <div className={style.bio} onClick={handleFooter} role="presentation">
+            <div
+                className={style.bio}
+                onClick={handleFooter}
+                role="presentation"
+                ref={(el) => (bio = el)}
+            >
                 <div>{name}</div>
                 <div>{occupation}</div>
                 <div>{location}</div>

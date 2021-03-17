@@ -30,9 +30,50 @@ Slider
     background: #fafafa;
 }
 
+.navPrev {
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    top: 0;
+    z-index: 99;
+    display: inline-block;
+    cursor: w-resize;
+}
+
+.navNext {
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    display: inline-block;
+    cursor: e-resize;
+}
+
+.row {
+    height: var(--row-height);
+    width: 100%;
+    padding-bottom: var(--figcaption-padding);
+    display: grid;
+    grid-template-columns: 0.7fr 0.3fr;
+}
+
+.counter {
+    grid-column: 2/3;
+}
+
+.spacer {
+    grid-column: 2/4;
+}
+
+/*----------------------------------------
+Description
+----------------------------------------*/
+
 .expand {
     width: max-content;
-    cursor: crosshair;
+    cursor: var(--cursor);
     margin-top: var(--expand-padding);
 }
 

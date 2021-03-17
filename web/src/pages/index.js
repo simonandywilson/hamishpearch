@@ -21,7 +21,13 @@ const Home = () => {
         allSanityProject: { nodes: projects },
     } = useStaticQuery(getData);
 
+    // How many projects are active/opened
     const [projectsActive, setProjectsActive] = useState(0);
+    const activePrev = useRef();
+    useEffect(() => {
+        activePrev.current = projectsActive;
+    });
+    const projectsActivePrev = activePrev.current;
 
     // Add useRef to each <Project>
     const projectRefs = useRef([]);
@@ -55,13 +61,17 @@ const Home = () => {
                             <Project
                                 ref={addToRefs}
                                 projectsActive={projectsActive}
+                                projectsActivePrev={projectsActivePrev}
                                 setProjectsActive={setProjectsActive}
                                 key={project._id}
                                 title={project.title}
                                 location={project.location}
                                 date={project.date}
                             >
-                                <Slider description={project._rawDescription}>
+                                <Slider
+                                    description={project._rawDescription}
+                                    length={project.slider.length}
+                                >
                                     {project.slider.map((image) => {
                                         return (
                                             <SwiperSlide key={image._key}>
@@ -73,12 +83,10 @@ const Home = () => {
                                         );
                                     })}
                                 </Slider>
-                                {project.images.map((image, i) => {
+                                {project.images.map((image) => {
                                     return (
                                         <Row
                                             key={image._key}
-                                            index={i + 1}
-                                            length={project.images.length}
                                             title={image.title}
                                             materials={image.materials}
                                             dimensions={image.dimensions}

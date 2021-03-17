@@ -15,7 +15,7 @@
     grid-row-gap: var(--plus-padding);
     grid-template-columns: var(--bio-column);
     grid-auto-rows: var(--row-height);
-    cursor: crosshair;
+    cursor: var(--cursor);
     padding-bottom: var(--padding);
     padding-top: var(--padding);
 }
@@ -57,7 +57,7 @@
     width: 100%;
     grid-column: 1/5;
     display: grid;
-    grid-template-columns: var(--four-column);
+    grid-template-columns: var(--contact-column);
     padding-top: var(--padding);
 }
 

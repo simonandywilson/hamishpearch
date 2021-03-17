@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import style from "./project.module.css";
+import style from "../styles/project.module.css";
 import Image from "gatsby-image";
 
 const Row = React.forwardRef((props, ref) => {
@@ -24,9 +24,6 @@ const Row = React.forwardRef((props, ref) => {
         <figure className={style.figure} key={props._key} ref={ref}>
             <figcaption className={style.figcaption}>
                 <div className={style.name}>{props.title}</div>
-                <div className={style.count}>
-                    {props.index}/{props.length}
-                </div>
                 <div className={style.materials}>{props.materials}</div>
                 <div className={style.dimensions}>{props.dimensions}</div>
                 <div className={style.year}>{props.date}</div>

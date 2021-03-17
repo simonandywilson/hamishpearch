@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./gallery.module.css";
+import style from "../styles/gallery.module.css";
 import Image from "gatsby-image";
 
 const Gallery = React.forwardRef((props, ref) => {

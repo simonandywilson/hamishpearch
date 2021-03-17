@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import style from "./project.module.css";
+import style from "../styles/project.module.css";
 import gsap from "gsap";
 
 const Project = React.forwardRef((props, ref) => {
@@ -56,6 +56,13 @@ const Project = React.forwardRef((props, ref) => {
         }
     };
 
+    // Close all projects
+    useEffect(() => {
+        if (props.projectsActivePrev > props.projectsActive) {
+            setState({ collapsed: true, name: "close" });
+        }
+    }, [props.projectsActivePrev, props.projectsActive]);
+
     useEffect(() => {
         const rowPadding = parseInt(
             getComputedStyle(document.body).getPropertyValue("--row-padding"),
@@ -74,7 +81,7 @@ const Project = React.forwardRef((props, ref) => {
                 display: "none",
             });
             gsap.to(cross, {
-                rotation: 45,
+                // rotation: 45,
                 autoAlpha: 0,
                 duration: 0.5,
             });
@@ -93,10 +100,10 @@ const Project = React.forwardRef((props, ref) => {
             gsap.set(cross, {
                 autoAlpha: 1,
             });
-            gsap.to(cross, {
-                rotation: 180,
-                duration: 0.5,
-            });
+            // gsap.to(cross, {
+            //     rotation: 180,
+            //     duration: 0.5,
+            // });
             gsap.to(childrenRef.current, {
                 autoAlpha: 1,
                 duration: 0.4,
@@ -118,9 +125,10 @@ const Project = React.forwardRef((props, ref) => {
             >
                 <div className={style.title}>
                     <span className={style.padding}>{props.title}</span>
-                    <span className={style.cross} ref={(el) => (cross = el)}>
+                    <span className={style.underline} ref={(el) => (cross = el)}></span>
+                    {/* <span className={style.cross} ref={(el) => (cross = el)}>
                         &#10005;
-                    </span>
+                    </span> */}
                 </div>
                 <div className={style.location}>{props.location}</div>
                 <div className={style.date}>{props.date}</div>

@@ -11,7 +11,7 @@
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-columns: var(--five-column);
+    grid-template-columns: var(--gallery-column);
     grid-auto-rows: minmax(var(--row-height), auto);
     padding-bottom: var(--figcaption-padding);
 }
@@ -25,7 +25,7 @@
 }
 
 .gallery > div {
-  cursor: crosshair;
+  cursor: var(--cursor);
   pointer-events: all;
 }
 
