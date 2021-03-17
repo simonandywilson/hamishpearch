@@ -6,7 +6,7 @@ import Header from "../components/header";
 import Project from "../components/project";
 import Slider from "../components/slider";
 import Row from "../components/row";
-import Gallery from "../components/gallery";
+// import Gallery from "../components/gallery";
 import Footer from "../components/footer";
 
 import Image from "gatsby-image";
@@ -99,7 +99,7 @@ const Home = () => {
                                     );
                                 })}
 
-                                {project.gallery.length > 0 && (
+                                {/* {project.gallery.length > 0 && (
                                     <Gallery name={project.gallerytitle}>
                                         {project.gallery.map((image) => {
                                             return (
@@ -117,7 +117,7 @@ const Home = () => {
                                             );
                                         })}
                                     </Gallery>
-                                )}
+                                )} */}
                             </Project>
                         );
                     })}

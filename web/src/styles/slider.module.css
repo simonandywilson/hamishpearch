@@ -56,7 +56,9 @@ Slider
     width: 100%;
     padding-bottom: var(--figcaption-padding);
     display: grid;
-    grid-template-columns: 0.7fr 0.3fr;
+    grid-template-columns: var(--slider-counter);
+    position: absolute;
+    top: calc(var(--row-height) * -1);
 }
 
 .counter {

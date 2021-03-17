@@ -165,7 +165,6 @@ const Slider = React.forwardRef((props, ref) => {
             <div className={style.row}>
                 <div className={style.counter}>{count.index}/{count.total}</div>
             </div>
-            <div className={style.spacer}></div>
             <div className={style.slider}>
                 <div className={style.sliderContainer}>
                     <Swiper

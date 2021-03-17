@@ -8,7 +8,6 @@ Variables
         --font-size: 0.75rem;
         --font-size-times: 0.8rem;
         --subtitle: 0.65rem;
-        --smallcaps-font-size: 0.9rem;
         --line-height: 1rem;
 
         --row-height: 13px;
@@ -31,6 +30,7 @@ Variables
         --project-column: var(--two-column);
         
         --slider-column: var(--one-column);
+        --slider-counter: var(--four-column);
         --expand-padding: var(--padding);
         --description-padding: var(--padding);
 
@@ -53,7 +53,6 @@ Variables
         --font-size: 0.75rem;
         --font-size-times: 0.8rem;
         --subtitle: 0.65rem;
-        --smallcaps-font-size: 0.9rem;
         --line-height: 1rem;
 
         --row-height: 15px;
@@ -72,6 +71,7 @@ Variables
         --project-column: var(--three-column);
 
         --slider-column: var(--three-column);
+        --slider-counter: var(--four-column);
         --expand-padding: 0;
         --description-padding: 0;
 
@@ -112,6 +112,7 @@ html body {
     font-family: helvetica;
     font-size: var(--font-size);
     line-height: var(--line-height);
+    overflow-x: hidden;
 }
 
 table {
@@ -127,6 +128,12 @@ table {
 /*----------------------------------------
 Typography
 ----------------------------------------*/
+
+@font-face {
+    font-family: 'Times-Small-Caps';
+    src: url('../fonts/Times-RomanSC.woff2') format('woff2'),
+        url('../fonts/Times-RomanSC.woff') format('woff');
+}
 
 p {
     white-space: pre-wrap;

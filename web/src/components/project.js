@@ -60,6 +60,7 @@ const Project = React.forwardRef((props, ref) => {
     useEffect(() => {
         if (props.projectsActivePrev > props.projectsActive) {
             setState({ collapsed: true, name: "close" });
+            props.setProjectsActive(0);
         }
     }, [props.projectsActivePrev, props.projectsActive]);
 
