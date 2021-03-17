@@ -62,6 +62,7 @@ const Project = React.forwardRef((props, ref) => {
             setState({ collapsed: true, name: "close" });
             props.setProjectsActive(0);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.projectsActivePrev, props.projectsActive]);
 
     useEffect(() => {

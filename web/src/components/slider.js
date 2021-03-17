@@ -44,13 +44,15 @@ const Slider = React.forwardRef((props, ref) => {
 
     const [count, setCount] = useState({
         index: null,
-        total: props.length
+        total: props.length,
     });
+
+    const mq = window.matchMedia("screen and (min-width: 800px)");
 
     // Initial setup/on resize
     useEffect(() => {
         if (state.initial === true) {
-            if (window.innerWidth <= 799) {
+            if (!mq.matches) {
                 const timeline = gsap.timeline({
                     onComplete: setState({
                         initial: false,
@@ -66,7 +68,7 @@ const Slider = React.forwardRef((props, ref) => {
                 timeline.set(textContainer, {
                     height: 0,
                 });
-            } else if (window.innerWidth >= 800) {
+            } else if (mq.matches) {
                 // Landscape
                 const timeline = gsap.timeline({
                     onComplete: setState({
@@ -80,6 +82,9 @@ const Slider = React.forwardRef((props, ref) => {
                     display: "none",
                 });
                 timeline.set(textContainer, {
+                    height: 0,
+                });
+                timeline.set(textContainer, {
                     height: "auto",
                 });
             }
@@ -88,14 +93,18 @@ const Slider = React.forwardRef((props, ref) => {
     }, [state.initial]);
 
     // Resize/init event listener
-    // useEffect(() => {
-    //     function windowWidth() {
-    //         setState({ ...state, initial: true });
-    //     }
-    //     window.addEventListener("resize", windowWidth);
-    //     return () => window.removeEventListener("resize", windowWidth);
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
+    useEffect(() => {
+        function windowChange() {
+            if (mq.matches) {
+                setState({ ...state, initial: true });
+            } else {
+                setState({ ...state, initial: true });
+            }
+        }
+        mq.addEventListener("change", windowChange);
+        return () => mq.removeEventListener("resize", windowChange);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // On click
     function expandDescription() {
@@ -113,27 +122,8 @@ const Slider = React.forwardRef((props, ref) => {
 
     // Set position on state change
     useEffect(() => {
-        // if (state.landscape === true) {
-        //     gsap.set(expand, {
-        //         display: "none",
-        //     });
-        //     gsap.set(textContainer, {
-        //         height: "auto",
-        //     });
-        // } else if (state.portrait === true) {
-        //     gsap.set(expand, {
-        //         display: "block",
-        //     });
-        //     gsap.set(textContainer, {
-        //         height: 0,
-        //     });
-        // }
-
         if (state.initial === false) {
             if (state.collapsed === true && state.portrait === true) {
-                // gsap.set(textContainer, {
-                //     height: "auto",
-                // });
                 gsap.to(textContainer, {
                     height: 0,
                     duration: 1,
@@ -163,7 +153,9 @@ const Slider = React.forwardRef((props, ref) => {
     return (
         <section className={style.section} ref={ref}>
             <div className={style.row}>
-                <div className={style.counter}>{count.index}/{count.total}</div>
+                <div className={style.counter}>
+                    {count.index}/{count.total}
+                </div>
             </div>
             <div className={style.slider}>
                 <div className={style.sliderContainer}>
@@ -176,7 +168,7 @@ const Slider = React.forwardRef((props, ref) => {
                             swiper.params.navigation.prevEl = navPrev.current;
                             swiper.params.navigation.nextEl = navNext.current;
                             swiper.navigation.update();
-                            setCount({ ...count, index: swiper.realIndex + 1});
+                            setCount({ ...count, index: swiper.realIndex + 1 });
                         }}
                         pagination={{ type: "progressbar" }}
                         observer={"true"}
