@@ -1,8 +1,1 @@
-<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-
- <g>
-  <title>Layer 1</title>
-  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="499.80736" x2="250" y1="0" x1="250" opacity="undefined" stroke="#000" fill="none"/>
-  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="250" x2="0" y1="250" x1="500" opacity="undefined" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" stroke="#000" fill="none"/>
- </g>
-</svg>
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="undefined" stroke-linejoin="undefined" opacity="undefined" stroke="#000" fill="none" d="M250 0v499.807"/><path stroke-linecap="undefined" stroke-linejoin="undefined" opacity="undefined" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" stroke="#000" fill="none" d="M500 250H0"/></svg>
