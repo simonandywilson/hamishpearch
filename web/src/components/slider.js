@@ -47,10 +47,9 @@ const Slider = React.forwardRef((props, ref) => {
         total: props.length,
     });
 
-    const mq = window.matchMedia("screen and (min-width: 800px)");
-
     // Initial setup/on resize
     useEffect(() => {
+        const mq = window.matchMedia("screen and (min-width: 800px)");
         if (state.initial === true) {
             if (!mq.matches) {
                 const timeline = gsap.timeline({
@@ -94,6 +93,7 @@ const Slider = React.forwardRef((props, ref) => {
 
     // Resize/init event listener
     useEffect(() => {
+        const mq = window.matchMedia("screen and (min-width: 800px)");
         function windowChange() {
             if (mq.matches) {
                 setState({ ...state, initial: true });
