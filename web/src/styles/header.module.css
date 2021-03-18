@@ -1,7 +1,7 @@
 .header {
     position: fixed;
-    width: calc(100% - (var(--padding)) * 2);
-    margin: var(--padding);
+    width: calc(100vw - (var(--padding) * 2));
+    padding: var(--padding);
     z-index: 99;
     display: grid;
     grid-template-columns: var(--header-column);
