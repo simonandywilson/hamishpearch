@@ -52,11 +52,10 @@ const Home = () => {
     return (
         <>
             <SEO />
-            <Header />
+            <Header setProjectsActive={setProjectsActive} />
             <table>
                 <tbody>
                     {projects.map((project, i) => {
-
                         return (
                             <Project
                                 ref={addToRefs}

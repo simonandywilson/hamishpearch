@@ -1,3 +1,13 @@
+table {
+    width: 100vw;
+    border: none;
+    margin: 0;
+    position: absolute;
+    padding: var(--padding);
+    padding-top: calc((var(--padding) * 2) + var(--row-padding));
+    border-spacing: 0;
+}
+
 tr {
     width: 100%;
     display: grid;
@@ -10,19 +20,24 @@ tr:last-of-type {
     margin-bottom: calc(var(--padding) * 3);
 }
 
+td:first-of-type {
+    cursor: var(--cursor);
+}
+
+td:first-of-type::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: var(--padding);
+    bottom: 9px;
+    z-index: -99;
+}
+
 td {
     vertical-align: top;
     padding: 0;
     margin: 0;
 }
-
-/* td:hover:first-child::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-bottom: 1px solid black;
-} */
 
 .underline {
     position: absolute;
@@ -32,7 +47,6 @@ td {
     bottom: -2px;
     height: 1px;
     background: #000000;
-
 }
 
 .project {
@@ -41,7 +55,7 @@ td {
     grid-auto-rows: var(--row-height);
     user-select: none;
     z-index: 99;
-    cursor: var(--cursor);
+    /* cursor: var(--cursor); */
 }
 
 .title {
@@ -62,17 +76,17 @@ td {
     grid-column: 1/-1;
 }
 
-.cross {
+/* .cross {
     visibility: hidden;
     width: max-content;
     height: max-content;
     display: inline-block;
     transform: rotate(45deg);
-}
+} */
 
-.padding {
+/* .padding {
     padding-right: var(--padding);
-}
+} */
 
 /*----------------------------------------
 Project

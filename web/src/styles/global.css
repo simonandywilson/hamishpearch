@@ -52,7 +52,7 @@ Variables
     :root {
         --font-size: 0.75rem;
         --font-size-times: 0.8rem;
-        --subtitle: 0.65rem;
+        --subtitle: 0.8rem;
         --line-height: 1rem;
 
         --row-height: 15px;
@@ -97,7 +97,7 @@ Variables
     --four-column-alt: 0.7fr 0.5fr 0.5fr 0.2fr;
     --four-column: 0.7fr 0.3fr 1fr 0.3fr;
     --caption-column: 1fr 0.7fr 0.3fr 0.3fr;
-    --cursor: pointer;
+    --cursor: crosshair;
 }
 
 /*----------------------------------------
@@ -114,16 +114,6 @@ html body {
     line-height: var(--line-height);
     overflow-x: hidden;
     overflow-y: scroll;
-}
-
-table {
-    width: 100vw;
-    border: none;
-    margin: 0;
-    position: absolute;
-    padding: var(--padding);
-    padding-top: calc((var(--padding) * 2) + var(--row-padding));
-    border-spacing: 0;
 }
 
 /*----------------------------------------

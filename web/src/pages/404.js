@@ -1,5 +1,4 @@
 import React from "react"
-import {Link} from "gatsby"
 import Ticker from "react-ticker";
 
 const main = {
@@ -7,21 +6,12 @@ const main = {
     width: "100vw",
     padding: "0",
     margin: "0",
-    paddingTop: "15px",
     overflow: "hidden"
 };
 
 const NotFound = () => {
   return (
       <main style={main}>
-          <Ticker direction={"toRight"} offset={"100%"}>
-              {() => (
-                  <>
-                      &nbsp;<Link to="/">Hamish Pearch</Link>&nbsp;
-                  </>
-              )}
-          </Ticker>
-
           <Ticker>
               {() => (
                   <>

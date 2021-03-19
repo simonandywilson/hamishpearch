@@ -47,8 +47,7 @@
 }
 
 .subtitle {
-    font-family: Times-Small-Caps;
-    text-transform: uppercase;
+    font-family: Times;
     line-height: 100%;
     font-size: var(--subtitle);
 }
