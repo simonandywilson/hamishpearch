@@ -34,7 +34,7 @@
         "react-dom": "^16.13.1",
         "react-helmet": "^6.1.0",
         "react-is": "^17.0.1",
-        "react-live-clock": "^5.1.0",
+        "react-live-clock": "^5.0.16",
         "react-native-text-ticker": "^1.11.0",
         "react-portable-text": "^0.2.3",
         "react-ticker": "^1.2.2",

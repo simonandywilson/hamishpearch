@@ -64,9 +64,9 @@ const Slider = React.forwardRef((props, ref) => {
                 timeline.set(expand, {
                     display: "block",
                 });
-                timeline.set(textContainer, {
-                    height: 0,
-                });
+                // timeline.set(textContainer, {
+                //     height: 0,
+                // });
                 timeline.set(textContainer, {
                     height: "auto",
                 });
