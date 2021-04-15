@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import style from "../styles/footer.module.css";
 import gsap from "gsap";
-import Clock from "react-live-clock";
 
 const Footer = (props) => {
     const {
@@ -19,7 +18,9 @@ const Footer = (props) => {
         collapsed: true,
         name: "close",
     });
-    
+
+    const [time, setTime] = useState(null);
+
     // Initial fade in
     useEffect(() => {
         gsap.to(footer, {
@@ -146,6 +147,16 @@ const Footer = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.collapsed, state.disabled]);
 
+    useEffect(() => {
+        const timer = setInterval(() => tick(), 1000);
+        return () => clearInterval(timer);
+    });
+
+    function tick() {
+        const time = new Date();
+        setTime(time.toLocaleTimeString())
+    }
+
     return (
         <footer className={style.footer} ref={(el) => (footer = el)}>
             <div
@@ -157,9 +168,7 @@ const Footer = (props) => {
                 <div>{name}</div>
                 <div>{occupation}</div>
                 <div>{location}</div>
-                <div className={style.dob}>
-                    <Clock format={"hh:mm:ss"} ticking={true} />
-                </div>
+                <time className={style.time}>{time}</time>
                 <div className={style.plus} ref={(el) => (plus = el)}>
                     &#10005;
                 </div>
