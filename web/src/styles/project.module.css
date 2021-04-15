@@ -29,7 +29,7 @@ td:first-of-type::before {
     position: absolute;
     width: 100%;
     height: var(--padding);
-    bottom: 9px;
+    bottom: 10px;
     z-index: -99;
 }
 
