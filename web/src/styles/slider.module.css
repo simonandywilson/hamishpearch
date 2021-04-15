@@ -33,7 +33,7 @@ Slider
 .navPrev {
     position: absolute;
     height: 100%;
-    width: 15%;
+    width: 33%;
     top: 0;
     z-index: 99;
     display: inline-block;
@@ -43,7 +43,7 @@ Slider
 .navNext {
     position: absolute;
     height: 100%;
-    width: 15%;
+    width: 33%;
     right: 0;
     top: 0;
     z-index: 99;
@@ -62,6 +62,8 @@ Slider
 }
 
 .counter {
+    font-size: var(--font-size-counter);
+    line-height: 100%;
     grid-column: 2/3;
 }
 
@@ -87,17 +89,12 @@ Description
     display: inline-block;
 }
 
-.textContainer {
+.description {
     overflow: hidden;
-}
-
-/* .text {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    flex: 1;
-} */
+}
 
 .text > p {
     margin-top: var(--row-height);

@@ -57,7 +57,7 @@ const Slider = React.forwardRef((props, ref) => {
                         initial: false,
                         landscape: false,
                         portrait: true,
-                        collapsed: true,
+                        collapsed: false,
                     }),
                 });
                 // Portait
@@ -66,6 +66,9 @@ const Slider = React.forwardRef((props, ref) => {
                 });
                 timeline.set(textContainer, {
                     height: 0,
+                });
+                timeline.set(textContainer, {
+                    height: "auto",
                 });
             } else if (mq.matches) {
                 // Landscape
@@ -101,8 +104,31 @@ const Slider = React.forwardRef((props, ref) => {
                 setState({ ...state, initial: true });
             }
         }
-        mq.addEventListener("change", windowChange);
-        return () => mq.removeEventListener("resize", windowChange);
+        // On Resize
+        try {
+            // Chrome, Firefox & Safari 14<
+            mq.addEventListener("change", windowChange);
+        } catch (e1) {
+            try {
+                // Safari >13
+                mq.addListener(windowChange);
+            } catch (e2) {
+                console.error(e2);
+            }
+        }
+        return () => {
+            try {
+                // Chrome, Firefox & Safari 14<
+                mq.removeEventListener("change", windowChange);
+            } catch (e1) {
+                try {
+                    // Safari >13
+                    mq.removeListener(windowChange);
+                } catch (e2) {
+                    console.error(e2);
+                }
+            }
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

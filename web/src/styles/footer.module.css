@@ -46,12 +46,6 @@
     grid-template-columns: var(--row-column);
 }
 
-.subtitle {
-    font-family: Times;
-    line-height: 100%;
-    font-size: var(--subtitle);
-}
-
 .contact {
     width: 100%;
     grid-column: 1/5;

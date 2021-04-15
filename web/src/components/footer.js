@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import style from "../styles/footer.module.css";
 import gsap from "gsap";
+import Clock from "react-live-clock";
 
 const Footer = (props) => {
     const {
-        sanityAbout: { name, occupation, location, dob, cv, contact },
+        sanityAbout: { name, occupation, location, cv, contact },
     } = useStaticQuery(getData);
 
     let footer = useRef(null);
@@ -18,7 +19,7 @@ const Footer = (props) => {
         collapsed: true,
         name: "close",
     });
-
+    
     // Initial fade in
     useEffect(() => {
         gsap.to(footer, {
@@ -156,7 +157,9 @@ const Footer = (props) => {
                 <div>{name}</div>
                 <div>{occupation}</div>
                 <div>{location}</div>
-                <div className={style.dob}>{dob}</div>
+                <div className={style.dob}>
+                    <Clock format={"hh:mm:ss"} ticking={true} />
+                </div>
                 <div className={style.plus} ref={(el) => (plus = el)}>
                     &#10005;
                 </div>

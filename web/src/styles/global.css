@@ -7,6 +7,7 @@ Variables
     :root {
         --font-size: 0.75rem;
         --font-size-times: 0.8rem;
+        --font-size-counter: 0.9rem;
         --subtitle: 0.65rem;
         --line-height: 1rem;
 
@@ -34,24 +35,25 @@ Variables
         --expand-padding: var(--padding);
         --description-padding: var(--padding);
 
-        --figcaption-column: var(--two-column-alt);
+        --figcaption-column: var(--two-column-small);
         --image-column: var(--three-column);
         --image-padding: 0;
         --materials-padding: 0;
         --span: 1 / 3;
-        --gallery-column: var(--two-column-alt);
+        --gallery-column: var(--two-column-small);
 
-        --bio-column: var(--four-column-alt);
-        --row-column: var(--two-column-alt);
-        --contact-column: var(--four-column-alt);
+        --bio-column: var(--four-column-small);
+        --row-column: var(--two-column-small);
+        --contact-column: var(--four-column-small);
     }
 }
 
-/* Large Screen */
-@media only screen and (min-width: 800px) {
+/* Medium Screen */
+@media only screen and (min-width: 768px) {
     :root {
         --font-size: 0.75rem;
         --font-size-times: 0.8rem;
+        --font-size-counter: 0.9rem;
         --subtitle: 0.8rem;
         --line-height: 1rem;
 
@@ -89,15 +91,61 @@ Variables
     }
 }
 
+/* Large Screen */
+@media only screen and (min-width: 1200px) {
+    :root {
+        --font-size: 0.75rem;
+        --font-size-times: 0.8rem;
+        --font-size-counter: 0.9rem;
+        --subtitle: 0.8rem;
+        --line-height: 1rem;
+
+        --row-height: 15px;
+        --row-padding: 10px;
+
+        --padding: 15px;
+        --figcaption-padding: 5px;
+        --plus-padding: 10px;
+
+        --visibility: block;
+        --visibility-alt: none;
+        --justify: start;
+
+        --header-column: var(--three-column-large);
+
+        --project-column: var(--three-column-large);
+
+        --slider-column: var(--three-column-large);
+        --slider-counter: var(--four-column-large);
+        --expand-padding: 0;
+        --description-padding: 0;
+
+        --figcaption-column: var(--caption-column-large);
+        --image-column: var(--four-column-large);
+        --image-padding: var(--padding);
+        --materials-padding: var(--padding);
+        --span: 0;
+        --gallery-column: var(--four-column-large);
+
+        --bio-column: var(--four-column-large);
+        --row-column: var(--four-column-large);
+        --contact-column: var(--four-column-large);
+
+    }
+}
+
 :root {
     --one-column: 1fr;
-    --two-column-alt: 1fr 0.4fr;
+    --two-column-small: 1fr 0.4fr;
     --two-column: 1fr 1fr;
     --three-column: 1fr 1fr 0.3fr;
-    --four-column-alt: 0.7fr 0.5fr 0.5fr 0.2fr;
+    --three-column-large: 1fr 1fr 0.15fr;
+    --four-column-small: 0.7fr 0.5fr 0.5fr 0.2fr;
     --four-column: 0.7fr 0.3fr 1fr 0.3fr;
+    --four-column-large: 0.8fr 0.2fr 1fr 0.15fr;
     --caption-column: 1fr 0.7fr 0.3fr 0.3fr;
-    --cursor: crosshair;
+    --caption-column-large: 1fr 0.7fr 0.3fr 0.15fr;
+    --cursor: pointer;
 }
 
 /*----------------------------------------
@@ -109,9 +157,10 @@ html body {
     width: 100vw;
     margin: 0;
     padding: 0;
-    font-family: helvetica;
+    font-family: hlv;
     font-size: var(--font-size);
     line-height: var(--line-height);
+    background: rgb(248, 248, 248);
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -121,9 +170,15 @@ Typography
 ----------------------------------------*/
 
 @font-face {
-    font-family: 'Times-Small-Caps';
-    src: url('../fonts/Times-RomanSC.woff2') format('woff2'),
-        url('../fonts/Times-RomanSC.woff') format('woff');
+    font-family: 'hlv';
+    src: url('../fonts/hlv.woff2') format('woff2'),
+        url('../fonts/hlv.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'tnr';
+    src: url('../fonts/tnr.woff2') format('woff2'),
+        url('../fonts/tnr.woff') format('woff');
 }
 
 p {
@@ -131,7 +186,7 @@ p {
 }
 
 .times {
-    font-family: times;
+    font-family: tnr;
     font-size: var(--font-size-times);
     line-height: var(--line-height);
 }
