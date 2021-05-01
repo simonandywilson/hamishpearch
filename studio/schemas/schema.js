@@ -7,18 +7,23 @@ import about from "./documents/about"
 import cv from "./objects/about/cv"
 import categories from "./objects/about/categories"
 import category from "./objects/about/category";
+import title from "./objects/about/title";
+import kind from "./objects/about/kind";
+import location from "./objects/about/location";
+import link from "./objects/about/link";
 import contact from "./objects/about/contact"
 import social from "./objects/about/social";
 
 import project from "./documents/project"
 import slider from "./objects/project/slider"
+import slide from "./objects/project/slide";
 import description from "./objects/project/description";
-import images from "./objects/project/images"
-import gallery from "./objects/project/gallery";
+import sort from "./objects/project/sort"
+import img from "./objects/project/img";
+import vid from "./objects/project/vid";
 
-import basic from "./objects/project/basic"
-import extra from "./objects/project/extra";
-import full from "./objects/project/full"
+
+
 
 export default createSchema({
     name: "mySchema",
@@ -29,17 +34,19 @@ export default createSchema({
         cv,
         categories,
         category,
+        title,
+        kind,
+        location,
+        link,
         contact,
         social,
 
         project,
         slider,
+        slide,
         description,
-        images,
-        gallery,
-
-        basic,
-        extra,
-        full,
+        sort,
+        img,
+        vid,
     ]),
 });

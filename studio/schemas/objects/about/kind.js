@@ -1,10 +1,10 @@
 export default {
-    title: "Contact",
-    name: "contact",
+    title: "Kind",
+    name: "kind",
     type: "array",
     of: [
         {
-            type: "social",
+            type: "link",
         },
     ],
 };

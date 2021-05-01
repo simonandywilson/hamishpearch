@@ -1,6 +1,6 @@
 export default {
     title: "Image",
-    name: "basic",
+    name: "slide",
     type: "image",
     fields: [
         {

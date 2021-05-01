@@ -22,35 +22,32 @@ export default {
     ],
     fields: [
         {
-            // Title
-            title: "Name",
-            name: "name",
+            // Column 1
+            title: "Column 1",
+            name: "columnOne",
             type: "string",
-            description: "Column 1.",
             fieldset: "bio",
         },
         {
-            // Occupation
-            title: "Occupation",
-            name: "occupation",
+            // Column 2
+            title: "Column 2",
+            name: "columnTwo",
             type: "string",
-            description: "Column 2.",
             fieldset: "bio",
         },
         {
-            // Location
-            title: "Location",
-            name: "location",
+            // Column 3
+            title: "Column 3",
+            name: "columnThree",
             type: "string",
-            description: "Column 3.",
             fieldset: "bio",
         },
         {
-            // DOB
-            title: "Date of Birth",
-            name: "dob",
+            // Column 4
+            title: "Column 4",
+            name: "columnFour",
             type: "string",
-            description: "Column 4.",
+            readOnly: "true",
             fieldset: "bio",
         },
         {
@@ -64,6 +61,7 @@ export default {
             title: "Contact",
             name: "contact",
             type: "contact",
+            validation: (Rule) => Rule.max(4),
         },
     ],
 };

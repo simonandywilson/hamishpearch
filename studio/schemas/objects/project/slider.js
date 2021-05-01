@@ -4,7 +4,7 @@ export default {
     type: "array",
     of: [
         {
-            type: "basic",
+            type: "slide",
         },
     ],
     

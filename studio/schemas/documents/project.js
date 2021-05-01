@@ -4,36 +4,12 @@ export default {
     type: "document",
     fieldsets: [
         {
-            name: "homepage",
-            title: "Project Information",
+            name: "information",
+            title: "Information",
             options: {
-                collapsible: true,
+                collapsible: false,
                 collapsed: false,
                 columns: 2,
-            },
-        },
-        {
-            name: "description",
-            title: "Image Slider & Description",
-            options: {
-                collapsible: true,
-                collapsed: false,
-            },
-        },
-        {
-            name: "images",
-            title: "Project Images",
-            options: {
-                collapsible: true,
-                collapsed: false,
-            },
-        },
-        {
-            name: "gallery",
-            title: "Project Gallery",
-            options: {
-                collapsible: true,
-                collapsed: false,
             },
         },
     ],
@@ -43,14 +19,14 @@ export default {
             title: "Title",
             name: "title",
             type: "string",
-            fieldset: "homepage",
+            fieldset: "information",
         },
         // Location
         {
             title: "Location",
             name: "location",
             type: "string",
-            fieldset: "homepage",
+            fieldset: "information",
         },
         // Date
         {
@@ -60,14 +36,13 @@ export default {
             options: {
                 dateFormat: "yyyy",
             },
-            fieldset: "homepage",
+            fieldset: "information",
         },
         // Image Slider
         {
             title: "Slider",
             name: "slider",
             type: "slider",
-            fieldset: "description",
         },
         // Description
         {
@@ -76,27 +51,12 @@ export default {
             type: "description",
             description:
                 "Use Shift+Return to add a line break without adding paragraph formatting and spacing.",
-            fieldset: "description",
         },
         // Images
         {
-            title: "Images",
-            name: "images",
-            type: "images",
-            fieldset: "images",
-        },
-        // Gallery
-        {
-            title: "Gallery Title",
-            name: "gallerytitle",
-            type: "string",
-            fieldset: "gallery",
-        },
-        {
-            title: "Gallery",
-            name: "gallery",
-            type: "gallery",
-            fieldset: "gallery",
+            title: "Content",
+            name: "content",
+            type: "sort",
         },
         // Order fields,
         {
