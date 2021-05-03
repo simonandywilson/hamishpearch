@@ -151,5 +151,5 @@ Images
 }
 
 .portrait {
-    grid-column: 1 / 2;
+    grid-column: var(--portrait-image);
 }

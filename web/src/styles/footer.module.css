@@ -54,7 +54,7 @@
     padding-top: var(--padding);
 }
 
-.type,
+.kind,
 .location {
     display: var(--visibility)
 }

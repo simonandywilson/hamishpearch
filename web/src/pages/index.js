@@ -82,18 +82,18 @@ const Home = () => {
                                         );
                                     })}
                                 </Slider>
-                                {project.images.map((image) => {
+                                {project.contents.map((content) => {
                                     return (
                                         <Row
-                                            key={image._key}
-                                            title={image.title}
-                                            materials={image.materials}
-                                            dimensions={image.dimensions}
-                                            date={image.date}
-                                            size={image.size}
-                                            alt={image.alt}
-                                            image={image.asset.fluid}
-                                            aspectRatio={image.asset.fluid.aspectRatio}
+                                            key={content._key}
+                                            title={content.title}
+                                            materials={content.materials}
+                                            dimensions={content.dimensions}
+                                            date={content.date}
+                                            size={content.size}
+                                            alt={content.alt}
+                                            image={content.asset.fluid}
+                                            aspectRatio={content.asset.fluid.aspectRatio}
                                         ></Row>
                                     );
                                 })}
@@ -122,7 +122,7 @@ const Home = () => {
                     })}
                 </tbody>
             </table>
-            <Footer projectsActive={projectsActive} />
+            <Footer projectsActive={projectsActive} setProjectsActive={setProjectsActive} />
         </>
     );
 };
@@ -148,30 +148,26 @@ const getData = graphql`
                     }
                 }
                 _rawDescription
-                images {
-                    _key
-                    title
-                    materials
-                    dimensions
-                    date(formatString: "YYYY")
-                    size
-                    alt
-                    asset {
-                        fluid(maxWidth: 2000) {
-                            aspectRatio
-                            ...GatsbySanityImageFluid
+                contents: content {
+                    ... on SanityImg {
+                        _type
+                        _key
+                        title
+                        materials
+                        dimensions
+                        date(formatString: "YYYY")
+                        size
+                        alt
+                        asset {
+                            fluid(maxWidth: 2000) {
+                                ...GatsbySanityImageFluid
+                                aspectRatio
+                            }
                         }
                     }
-                }
-                gallerytitle
-                gallery {
-                    _key
-                    title
-                    alt
-                    asset {
-                        fluid(maxWidth: 1000) {
-                            ...GatsbySanityImageFluid
-                        }
+                    ... on SanityVid {
+                        _key
+                        _type
                     }
                 }
             }

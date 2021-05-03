@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import style from "../styles/footer.module.css";
+import * as style from "../styles/footer.module.css";
 import gsap from "gsap";
+import Time from "../components/time"
 
 const Footer = (props) => {
     const {
-        sanityAbout: { name, occupation, location, cv, contact },
+        sanityAbout: { columnOne, columnTwo, columnThree, cv, contact },
     } = useStaticQuery(getData);
 
     let footer = useRef(null);
-    let bio = useRef(null);
+    // let bio = useRef(null);
     let about = useRef(null);
     let plus = useRef(null);
 
@@ -18,8 +19,6 @@ const Footer = (props) => {
         collapsed: true,
         name: "close",
     });
-
-    const [time, setTime] = useState(null);
 
     // Initial fade in
     useEffect(() => {
@@ -42,13 +41,20 @@ const Footer = (props) => {
     }, [props.projectsActive]);
 
     const handleFooter = () => {
-        // If collapsed & not disabled
-        if (state.collapsed === true && state.disabled === false) {
-            setState({ ...state, collapsed: false, name: "open" });
-            // If expanded & not disabled
-        } else if (state.collapsed === false && state.disabled === false) {
-            setState({ ...state, collapsed: true, name: "close" });
+        // If projects are opened
+        if (props.projectsActive > 0) {
+            props.setProjectsActive(0);
+            setTimeout(() => setState({ disabled: false, collapsed: false, name: "open" }), 50);
+        } else {
+            // If collapsed & not disabled
+            if (state.collapsed === true && state.disabled === false) {
+                setState({ ...state, collapsed: false, name: "open" });
+                // If expanded & not disabled
+            } else if (state.collapsed === false && state.disabled === false) {
+                setState({ ...state, collapsed: true, name: "close" });
+            }
         }
+        
     };
 
     useEffect(() => {
@@ -76,9 +82,9 @@ const Footer = (props) => {
                 duration: 1,
                 ease: "Power3.easeOut",
             });
-            gsap.set(bio, {
-                cursor: "pointer",
-            });
+            // gsap.set(bio, {
+            //     cursor: "pointer",
+            // });
         } else if (state.collapsed === false && state.disabled === false) {
             // Open Footer
             gsap.to(footer, {
@@ -100,9 +106,9 @@ const Footer = (props) => {
                 duration: 1,
                 ease: "Power3.easeOut",
             });
-            gsap.set(bio, {
-                cursor: "pointer",
-            });
+            // gsap.set(bio, {
+            //     cursor: "pointer",
+            // });
         } else if (state.collapsed === true && state.disabled === true) {
             gsap.to(footer, {
                 paddingBottom: 0,
@@ -110,9 +116,9 @@ const Footer = (props) => {
                 duration: 1,
                 ease: "Power3.easeOut",
             });
-            gsap.set(bio, {
-                cursor: "default",
-            });
+            // gsap.set(bio, {
+            //     cursor: "default",
+            // });
         } else if (state.collapsed === false && state.disabled === true) {
             const timeline = gsap.timeline({
                 onComplete: setState({ ...state, collapsed: true, name: "close" }),
@@ -140,22 +146,12 @@ const Footer = (props) => {
                 duration: 1,
                 ease: "Power3.easeOut",
             });
-            timeline.set(bio, {
-                cursor: "default",
-            });
+            // timeline.set(bio, {
+            //     cursor: "default",
+            // });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.collapsed, state.disabled]);
-
-    useEffect(() => {
-        const timer = setInterval(() => tick(), 1000);
-        return () => clearInterval(timer);
-    });
-
-    function tick() {
-        const time = new Date();
-        setTime(time.toLocaleTimeString())
-    }
 
     return (
         <footer className={style.footer} ref={(el) => (footer = el)}>
@@ -163,12 +159,12 @@ const Footer = (props) => {
                 className={style.bio}
                 onClick={handleFooter}
                 role="presentation"
-                ref={(el) => (bio = el)}
+                // ref={(el) => (bio = el)}
             >
-                <div>{name}</div>
-                <div>{occupation}</div>
-                <div>{location}</div>
-                <time className={style.time}>{time}</time>
+                <div>{columnOne}</div>
+                <div>{columnTwo}</div>
+                <div>{columnThree}</div>
+                <Time class={style.time}/>
                 <div className={style.plus} ref={(el) => (plus = el)}>
                     &#10005;
                 </div>
@@ -178,71 +174,158 @@ const Footer = (props) => {
                     return (
                         <section className={style.section} key={categories._key}>
                             {categories.content.map((category) => {
-                                const name = () => {
-                                    if (category.name_link === null) {
-                                        return <>{category.name}</>;
-                                    } else {
-                                        return (
-                                            <a
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                href={category.name_link}
-                                            >
-                                                {category.name}
-                                            </a>
-                                        );
+                                const title = () => {
+                                    if (category.title.length > 0) {
+                                        if (category.title[0].hyperlink == null) {
+                                            if (category.title[0].subtitle == null) {
+                                                return <>{category.title[0].title}</>;
+                                            } else {
+                                                return (
+                                                    <>
+                                                        {category.title[0].title}&#44;
+                                                        <span className={style.subtitle}>
+                                                            &nbsp;
+                                                            {category.title[0].subtitle}
+                                                        </span>
+                                                    </>
+                                                );
+                                            }
+                                            
+                                        } else {
+                                            if (category.title[0].subtitle == null) {
+                                                return (
+                                                    <a
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        href={category.title[0].hyperlink}
+                                                    >
+                                                        {category.title[0].title}
+                                                    </a>
+                                                );
+                                            } else {
+                                                return (
+                                                    <>
+                                                        <a
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            href={category.title[0].hyperlink}
+                                                        >
+                                                            {category.title[0].title}&#44;
+                                                        </a>
+                                                        <span className={style.subtitle}>
+                                                            &nbsp;
+                                                            {category.title[0].subtitle}
+                                                        </span>
+                                                    </>
+                                                );
+                                            }
+                                            
+                                        }
                                     }
                                 };
-                                const type = () => {
-                                    if (category.type_link === null) {
-                                        return <>{category.type}</>;
-                                    } else {
-                                        return (
-                                            <a
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                href={category.type_link}
-                                            >
-                                                {category.type}
-                                            </a>
-                                        );
+                                const kind = () => {
+                                    if (category.kind.length > 0) {
+                                        if (category.kind[0].hyperlink == null) {
+                                            if (category.kind[0].subtitle == null) {
+                                                return <>{category.kind[0].title}</>;
+                                            } else {
+                                                return (
+                                                    <>
+                                                        {category.kind[0].title}&#44;
+                                                        <span className={style.subtitle}>
+                                                            &nbsp;
+                                                            {category.kind[0].subtitle}
+                                                        </span>
+                                                    </>
+                                                );
+                                            }
+                                        } else {
+                                            if (category.kind[0].subtitle == null) {
+                                                return (
+                                                    <a
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        href={category.kind[0].hyperlink}
+                                                    >
+                                                        {category.kind[0].title}
+                                                    </a>
+                                                );
+                                            } else {
+                                                return (
+                                                    <>
+                                                        <a
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            href={category.kind[0].hyperlink}
+                                                        >
+                                                            {category.kind[0].title}&#44;
+                                                        </a>
+                                                        <span className={style.subtitle}>
+                                                            &nbsp;{category.kind[0].subtitle}
+                                                        </span>
+                                                    </>
+                                                );
+                                            }
+                                        }
                                     }
                                 };
                                 const location = () => {
-                                    if (category.location_link === null) {
-                                        return <>{category.location}</>;
-                                    } else {
-                                        return (
-                                            <a
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                href={category.location_link}
-                                            >
-                                                {category.location}
-                                            </a>
-                                        );
+                                    if (category.location.length > 0) {
+                                        if (category.location[0].hyperlink == null) {
+                                            if (category.location[0].subtitle == null) {
+                                                return <>{category.location[0].title}</>;
+                                            } else {
+                                                return (
+                                                    <>
+                                                        {category.location[0].title}&#44;
+                                                        <span className={style.subtitle}>
+                                                            &nbsp;
+                                                            {category.location[0].subtitle}
+                                                        </span>
+                                                    </>
+                                                );
+                                            }
+                                        } else {
+                                            if (category.location[0].subtitle == null) {
+                                                return (
+                                                    <a
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        href={category.location[0].hyperlink}
+                                                    >
+                                                        {category.location[0].title}
+                                                    </a>
+                                                );
+                                            } else {
+                                                return (
+                                                    <>
+                                                        <a
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            href={category.location[0].hyperlink}
+                                                        >
+                                                            {category.location[0].title}&#44;
+                                                        </a>
+                                                        <span className={style.subtitle}>
+                                                            &nbsp;{category.location[0].subtitle}
+                                                        </span>
+                                                    </>
+                                                );
+                                            }
+                                        }
                                     }
                                 };
 
                                 return (
                                     <div className={style.row} key={category._key}>
-                                        <div className={style.name}>
-                                            {name()}
-                                            <span className={style.subtitle}>
-                                                &nbsp;{category.name_sub}
-                                            </span>
+                                        <div className={style.title}>
+                                            {title()}
                                         </div>
-                                        <div className={style.type}>
-                                            {type()}
-                                            <span className={style.subtitle}>
-                                                &nbsp;{category.type_sub}
-                                            </span>
+                                        <div className={style.kind}>
+                                            {kind()}
                                         </div>
                                         <div className={style.location}>
                                             {location()}
-                                            <span className={style.subtitle}>
-                                                &nbsp;{category.location_sub}
-                                            </span>
                                         </div>
                                         <div className={style.date}>{category.date}</div>
                                     </div>
@@ -275,23 +358,28 @@ export default Footer;
 const getData = graphql`
     {
         sanityAbout {
-            name
-            occupation
-            location
-            dob
+            columnOne
+            columnTwo
+            columnThree
             cv {
                 _key
                 content {
                     _key
-                    name
-                    name_sub
-                    name_link
-                    type
-                    type_sub
-                    type_link
-                    location
-                    location_sub
-                    location_link
+                    title {
+                        title
+                        subtitle
+                        hyperlink
+                    }
+                    kind {
+                        title
+                        subtitle
+                        hyperlink
+                    }
+                    location {
+                        title
+                        subtitle
+                        hyperlink
+                    }
                     date
                 }
             }

@@ -36,7 +36,7 @@ const Row = React.forwardRef((props, ref) => {
                             ...props.image,
                             aspectRatio: aspect,
                         }}
-                        durationFadeIn={1000}
+                        durationFadeIn={500}
                     />
                 </div>
             </div>

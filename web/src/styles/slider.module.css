@@ -79,6 +79,7 @@ Description
     width: max-content;
     cursor: var(--cursor);
     margin-top: var(--expand-padding);
+    display: var(--description-expand);
 }
 
 .padding {

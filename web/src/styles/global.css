@@ -29,17 +29,19 @@ Variables
         --header-column: var(--two-column);
 
         --project-column: var(--two-column);
-        
+
         --slider-column: var(--one-column);
         --slider-counter: var(--four-column);
         --expand-padding: var(--padding);
         --description-padding: var(--padding);
+        --description-expand: block;
 
         --figcaption-column: var(--two-column-small);
         --image-column: var(--three-column);
         --image-padding: 0;
         --materials-padding: 0;
         --span: 1 / 3;
+        --portrait-image: 1 / 3;
         --gallery-column: var(--two-column-small);
 
         --bio-column: var(--four-column-small);
@@ -49,7 +51,7 @@ Variables
 }
 
 /* Medium Screen */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 800px) {
     :root {
         --font-size: 0.75rem;
         --font-size-times: 0.8rem;
@@ -76,18 +78,19 @@ Variables
         --slider-counter: var(--four-column);
         --expand-padding: 0;
         --description-padding: 0;
+        --description-expand: none;
 
         --figcaption-column: var(--caption-column);
         --image-column: var(--four-column);
         --image-padding: var(--padding);
         --materials-padding: var(--padding);
         --span: 0;
+        --portrait-image: 1 / 2;
         --gallery-column: var(--four-column);
 
         --bio-column: var(--four-column);
         --row-column: var(--four-column);
         --contact-column: var(--four-column);
-
     }
 }
 
@@ -119,18 +122,19 @@ Variables
         --slider-counter: var(--four-column-large);
         --expand-padding: 0;
         --description-padding: 0;
+        --description-expand: none;
 
         --figcaption-column: var(--caption-column-large);
         --image-column: var(--four-column-large);
         --image-padding: var(--padding);
         --materials-padding: var(--padding);
         --span: 0;
+        --portrait-image: 1 / 2;
         --gallery-column: var(--four-column-large);
 
         --bio-column: var(--four-column-large);
         --row-column: var(--four-column-large);
         --contact-column: var(--four-column-large);
-
     }
 }
 
@@ -170,15 +174,13 @@ Typography
 ----------------------------------------*/
 
 @font-face {
-    font-family: 'hlv';
-    src: url('../fonts/hlv.woff2') format('woff2'),
-        url('../fonts/hlv.woff') format('woff');
+    font-family: "hlv";
+    src: url("../fonts/hlv.woff2") format("woff2"), url("../fonts/hlv.woff") format("woff");
 }
 
 @font-face {
-    font-family: 'tnr';
-    src: url('../fonts/tnr.woff2') format('woff2'),
-        url('../fonts/tnr.woff') format('woff');
+    font-family: "tnr";
+    src: url("../fonts/tnr.woff2") format("woff2"), url("../fonts/tnr.woff") format("woff");
 }
 
 p {
