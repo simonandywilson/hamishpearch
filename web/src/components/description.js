@@ -4,7 +4,7 @@ import style from "../styles/slider.module.css";
 import gsap from "gsap";
 
 const Description = (props) => {
-    const mq = window.matchMedia("screen and (min-width: 800px)");
+    const mq = window ? window.matchMedia("screen and (min-width: 800px)") : undefined;
     let textContainer = useRef(null);
     let cross = useRef(null);
 
