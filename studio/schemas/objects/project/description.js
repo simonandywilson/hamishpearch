@@ -1,6 +1,5 @@
-import React from "react";
-
-const Times = (props) => <span style={{ fontFamily: "Times" }}>{props.children}</span>;
+// import React from "react";
+// const Times = (props) => <span style={{ fontFamily: "Times" }}>{props.children}</span>;
 
 export default {
     title: "Decription",
@@ -10,14 +9,14 @@ export default {
         {
             type: "block",
             styles: [
-                { title: "Helvetica", value: "normal" },
-                {
-                    title: "Times",
-                    value: "times",
-                    blockEditor: {
-                        render: Times,
-                    },
-                },
+                // { title: "Helvetica", value: "normal" },
+                // {
+                //     title: "Times",
+                //     value: "times",
+                //     blockEditor: {
+                //         render: Times,
+                //     },
+                // },
             ],
             lists: [],
             marks: {
