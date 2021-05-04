@@ -5,7 +5,8 @@ import SEO from "../components/seo";
 import Header from "../components/header";
 import Project from "../components/project";
 import Slider from "../components/slider";
-import Row from "../components/row";
+import Img from "../components/img";
+import Vid from "../components/vid";
 // import Gallery from "../components/gallery";
 import Footer from "../components/footer";
 
@@ -83,8 +84,8 @@ const Home = () => {
                                     })}
                                 </Slider>
                                 {project.contents.map((content) => {
-                                    return (
-                                        <Row
+                                    return content._type === "img" ? (
+                                        <Img
                                             key={content._key}
                                             title={content.title}
                                             materials={content.materials}
@@ -94,7 +95,18 @@ const Home = () => {
                                             alt={content.alt}
                                             image={content.asset.fluid}
                                             aspectRatio={content.asset.fluid.aspectRatio}
-                                        ></Row>
+                                        />
+                                    ) : (
+                                        <Vid
+                                            key={content._key}
+                                            type={content.type}
+                                            title={content.title}
+                                            materials={content.materials}
+                                            dimensions={content.dimensions}
+                                            date={content.date}
+                                            size={content.size}
+                                            video={content._rawVideo}
+                                        />
                                     );
                                 })}
 
@@ -166,8 +178,15 @@ const getData = graphql`
                         }
                     }
                     ... on SanityVid {
-                        _key
                         _type
+                        _key
+                        type
+                        title
+                        materials
+                        dimensions
+                        date(formatString: "YYYY")
+                        size
+                        _rawVideo(resolveReferences: { maxDepth: 10 })
                     }
                 }
             }
