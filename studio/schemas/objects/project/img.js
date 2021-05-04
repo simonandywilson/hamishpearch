@@ -43,12 +43,15 @@ export default {
             type: "string",
             description: "Select whether the image spans over one or two columns.",
             options: {
-                list: ["Small", "Large"],
+                list: [
+                    { title: "Small", value: "small" },
+                    { title: "Large", value: "large" },
+                ],
+                isHighlighted: true,
                 layout: "radio",
                 direction: "horizontal",
-                isHighlighted: true,
             },
-            initialValue: "Small",
+            initialValue: "small",
         },
         {
             title: "Alternative Text",
@@ -65,14 +68,23 @@ export default {
         select: {
             title: "title",
             media: "asset",
-            subtitle: "size",
+            size: "size",
         },
         prepare(selection) {
-            const { title, media, subtitle } = selection;
+            const { title, media, size } = selection;
+
+            const formatSize = (() => {
+                if (size === "small") {
+                    return "Small";
+                } else {
+                    return "Large";
+                }
+            })();
+
             return {
                 title: title,
                 media: media,
-                subtitle: `${subtitle} Image`,
+                subtitle: `${formatSize} Image`,
             };
         },
     },
