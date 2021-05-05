@@ -184,7 +184,7 @@ const Footer = (props) => {
                                 );
                             }
                         };
-                        return { linkType };
+                        return (<div className={style.contact}>{linkType()}</div>)
                     })}
                 </div>
                 <div className={style.cv}>
