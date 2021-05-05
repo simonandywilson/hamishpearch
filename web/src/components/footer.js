@@ -155,6 +155,20 @@ const Footer = (props) => {
                 </div>
             </div>
             <div className={style.about}>
+                <div className={style.contact}>
+                    {contact.map((social) => {
+                        return (
+                            <a
+                                href={social.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                key={social._key}
+                            >
+                                {social.title}
+                            </a>
+                        );
+                    })}
+                </div>
                 <div className={style.cv}>
                     {cv.map((categories) => {
                         return (
@@ -315,20 +329,6 @@ const Footer = (props) => {
                                     );
                                 })}
                             </section>
-                        );
-                    })}
-                </div>
-                <div className={style.contact}>
-                    {contact.map((social) => {
-                        return (
-                            <a
-                                href={social.link}
-                                target="_blank"
-                                rel="noreferrer"
-                                key={social._key}
-                            >
-                                {social.title}
-                            </a>
                         );
                     })}
                 </div>

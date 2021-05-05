@@ -47,7 +47,6 @@
 .contact {
     display: grid;
     grid-template-columns: var(--contact-column);
-    padding-top: var(--padding);
     margin-bottom: var(--padding);
 }
 
@@ -56,17 +55,11 @@
     margin-bottom: var(--padding);
 }
 
-.section:last-of-type {
-    margin-bottom: 0;
-}
-
 .row {
     width: 100%;
     display: grid;
     grid-template-columns: var(--row-column);
 }
-
-
 
 .kind,
 .location {
