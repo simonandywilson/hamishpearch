@@ -1,0 +1,30 @@
+.description {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 99;
+}
+.expand {
+    width: max-content;
+    cursor: var(--cursor);
+    margin-top: var(--expand-padding);
+    display: var(--description-expand);
+}
+
+.padding {
+    padding-right: var(--padding);
+}
+
+.cross {
+    display: inline-block;
+}
+
+.text > p {
+    margin-top: var(--row-height);
+    margin-bottom: 0;
+}
+
+.text > p:first-child {
+    margin-top: var(--description-padding);
+}

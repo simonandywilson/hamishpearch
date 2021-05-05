@@ -19,52 +19,6 @@ const Slider = React.forwardRef((props, ref) => {
         total: props.length,
     });
 
-
-    // Initial setup
-    // useEffect(() => {
-    //     if (!mq.matches) {
-    //         // const timeline = gsap.timeline({
-    //         //     onComplete: setState({
-    //         //         initial: false,
-    //         //         landscape: false,
-    //         //         portrait: true,
-    //         //         collapsed: false,
-    //         //     }),
-    //         // });
-    //         // Portait
-    //         // timeline.set(expand, {
-    //         //     display: "block",
-    //         // });
-    //         // timeline.set(textContainer, {
-    //         //     height: 0,
-    //         // });
-    //         // timeline.set(textContainer, {
-    //         //     height: "auto",
-    //         // });
-    //     } else if (mq.matches) {
-    //         // Landscape
-    //         // const timeline = gsap.timeline({
-    //         //     onComplete: setState({
-    //         //         initial: false,
-    //         //         landscape: true,
-    //         //         portrait: false,
-    //         //         collapsed: false,
-    //         //     }),
-    //         // });
-    //         // timeline.set(expand, {
-    //         //     display: "none",
-    //         // });
-    //         // timeline.set(textContainer, {
-    //         //     height: 0,
-    //         // });
-    //         // timeline.set(textContainer, {
-    //         //     height: "auto",
-    //         // });
-    //     }
-
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
-
     return (
         <section className={style.section} ref={ref}>
             <div className={style.row}>

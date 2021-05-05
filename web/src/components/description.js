@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import PortableText from "@sanity/block-content-to-react";
-import style from "../styles/slider.module.css";
+import style from "../styles/description.module.css";
 import gsap from "gsap";
 
 const Description = (props) => {

@@ -6,7 +6,6 @@ Variables
 @media only screen and (max-width: 799px) {
     :root {
         --font-size: 0.75rem;
-        --font-size-times: 0.8rem;
         --font-size-counter: 0.9rem;
         --subtitle: 0.65rem;
         --line-height: 1rem;
@@ -54,7 +53,6 @@ Variables
 @media only screen and (min-width: 800px) {
     :root {
         --font-size: 0.75rem;
-        --font-size-times: 0.8rem;
         --font-size-counter: 0.9rem;
         --subtitle: 0.8rem;
         --line-height: 1rem;
@@ -98,7 +96,6 @@ Variables
 @media only screen and (min-width: 1200px) {
     :root {
         --font-size: 0.75rem;
-        --font-size-times: 0.8rem;
         --font-size-counter: 0.9rem;
         --subtitle: 0.8rem;
         --line-height: 1rem;
@@ -150,6 +147,7 @@ Variables
     --caption-column: 1fr 0.7fr 0.3fr 0.3fr;
     --caption-column-large: 1fr 0.7fr 0.3fr 0.15fr;
     --cursor: pointer;
+    --background-colour: rgb(248, 248, 248);
 }
 
 /*----------------------------------------
@@ -164,7 +162,7 @@ html body {
     font-family: hlv;
     font-size: var(--font-size);
     line-height: var(--line-height);
-    background: rgb(248, 248, 248);
+    background: var(--background-colour);
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -178,25 +176,14 @@ Typography
     src: url("../fonts/hlv.woff2") format("woff2"), url("../fonts/hlv.woff") format("woff");
 }
 
-@font-face {
-    font-family: "tnr";
-    src: url("../fonts/tnr.woff2") format("woff2"), url("../fonts/tnr.woff") format("woff");
-}
-
 p {
     white-space: pre-wrap;
-}
-
-.times {
-    font-family: tnr;
-    font-size: var(--font-size-times);
-    line-height: var(--line-height);
 }
 
 a {
     width: max-content;
     color: #000000;
-    text-decoration: underline;
+    text-decoration: none;
     transition: 0.5s;
 }
 
