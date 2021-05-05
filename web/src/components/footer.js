@@ -141,6 +141,7 @@ const Footer = (props) => {
                 window.removeEventListener("resize", hideFooter);
             };
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -157,16 +158,33 @@ const Footer = (props) => {
             <div className={style.about}>
                 <div className={style.contact}>
                     {contact.map((social) => {
-                        return (
-                            <a
-                                href={social.link}
-                                target="_blank"
-                                rel="noreferrer"
-                                key={social._key}
-                            >
-                                {social.title}
-                            </a>
-                        );
+                        const linkType = () => {
+                            if (social.type === "external") {
+                                return (
+                                    <a
+                                        href={social.link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        key={social._key}
+                                    >
+                                        {social.title}
+                                    </a>
+                                );
+                            } else if (social.type === "email") {
+                                return (
+                                    <a href={"mailto:" + social.link} key={social._key}>
+                                        {social.title}
+                                    </a>
+                                );
+                            } else if (social.type === "phone") {
+                                return (
+                                    <a href={"tel:" + social.link} key={social._key}>
+                                        {social.title}
+                                    </a>
+                                );
+                            }
+                        };
+                        return { linkType };
                     })}
                 </div>
                 <div className={style.cv}>
@@ -370,6 +388,7 @@ const getData = graphql`
             contact {
                 _key
                 title
+                type
                 link
             }
         }
