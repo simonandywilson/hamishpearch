@@ -14,23 +14,6 @@ const Description = (props) => {
         collapsed: false,
     });
 
-    const overrides = {
-        times: (props) => <p className="times" {...props} />,
-    };
-
-    const serializers = {
-        types: {
-            block: (props) =>
-                // Check if we have an override for the “style”
-                overrides[props.node.style]
-                    ? // if so, call the function and pass in the children, ignoring
-                      // the other unnecessary props
-                      overrides[props.node.style]({ children: props.children })
-                    : // otherwise, fallback to the provided default with all props
-                      PortableText.defaultSerializers.types.block(props),
-        },
-    };
-
     // Initial
     useEffect(() => {
         if (mq.matches) {
@@ -122,23 +105,20 @@ const Description = (props) => {
 
     return (
         <div className={style.description}>
-            <div
-                className={style.expand}
-                onClick={expandDescription}
-                role="presentation"
-            >
+            <div className={style.expand} onClick={expandDescription} role="presentation">
                 <span className={style.padding}>Description</span>
                 <span className={style.cross} ref={(el) => (cross = el)}>
                     &#10005;
                 </span>
             </div>
             <div className={style.textContainer} ref={(el) => (textContainer = el)}>
-                <PortableText
-                    className={style.text}
-                    blocks={props.description}
-                    renderContainerOnSingleChild={true}
-                    serializers={serializers}
-                />
+                {props.description && (
+                    <PortableText
+                        className={style.text}
+                        blocks={props.description}
+                        renderContainerOnSingleChild={true}
+                    />
+                )}
             </div>
         </div>
     );

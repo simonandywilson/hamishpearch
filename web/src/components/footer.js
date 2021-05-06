@@ -164,26 +164,29 @@ const Footer = (props) => {
                                     href={social.link}
                                     target="_blank"
                                     rel="noreferrer"
-                                    key={social._key}
                                 >
                                     {social.title}
                                 </a>
                             );
                         } else if (social.type === "email") {
                             return (
-                                <a href={"mailto:" + social.link} key={social._key}>
+                                <a href={"mailto:" + social.link}>
                                     {social.title}
                                 </a>
                             );
                         } else if (social.type === "phone") {
                             return (
-                                <a href={"tel:" + social.link} key={social._key}>
+                                <a href={"tel:" + social.link}>
                                     {social.title}
                                 </a>
                             );
                         }
                     };
-                    return <div className={style.contact}>{linkType()}</div>;
+                    return (
+                        <div key={social._key} className={style.contact}>
+                            {linkType()}
+                        </div>
+                    );
                 })}
                 <div className={style.cv}>
                     {cv.map((categories) => {
