@@ -156,37 +156,35 @@ const Footer = (props) => {
                 </div>
             </div>
             <div className={style.about}>
-                <div className={style.contact}>
-                    {contact.map((social) => {
-                        const linkType = () => {
-                            if (social.type === "external") {
-                                return (
-                                    <a
-                                        href={social.link}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        key={social._key}
-                                    >
-                                        {social.title}
-                                    </a>
-                                );
-                            } else if (social.type === "email") {
-                                return (
-                                    <a href={"mailto:" + social.link} key={social._key}>
-                                        {social.title}
-                                    </a>
-                                );
-                            } else if (social.type === "phone") {
-                                return (
-                                    <a href={"tel:" + social.link} key={social._key}>
-                                        {social.title}
-                                    </a>
-                                );
-                            }
-                        };
-                        return (<div className={style.contact}>{linkType()}</div>)
-                    })}
-                </div>
+                {contact.map((social) => {
+                    const linkType = () => {
+                        if (social.type === "external") {
+                            return (
+                                <a
+                                    href={social.link}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    key={social._key}
+                                >
+                                    {social.title}
+                                </a>
+                            );
+                        } else if (social.type === "email") {
+                            return (
+                                <a href={"mailto:" + social.link} key={social._key}>
+                                    {social.title}
+                                </a>
+                            );
+                        } else if (social.type === "phone") {
+                            return (
+                                <a href={"tel:" + social.link} key={social._key}>
+                                    {social.title}
+                                </a>
+                            );
+                        }
+                    };
+                    return <div className={style.contact}>{linkType()}</div>;
+                })}
                 <div className={style.cv}>
                     {cv.map((categories) => {
                         return (
