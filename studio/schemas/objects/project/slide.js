@@ -22,7 +22,7 @@ export default {
         prepare(selection) {
             const { media, subtitle } = selection;
             return {
-                title: "Installation View",
+                title: "Slider Image",
                 media: media,
                 subtitle: subtitle,
             };

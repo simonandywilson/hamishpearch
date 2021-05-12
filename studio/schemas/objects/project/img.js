@@ -63,6 +63,14 @@ export default {
             },
             validation: (Rule) => Rule.required().warning(`Image alt is required.`),
         },
+        {
+            title: "PDF",
+            name: "pdf",
+            type: "file",
+            options: {
+                isHighlighted: true,
+            },
+        },
     ],
     preview: {
         select: {
