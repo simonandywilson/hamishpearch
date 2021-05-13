@@ -41,7 +41,7 @@ const Img = React.forwardRef((props, ref) => {
                         alt={props.alt}
                         fluid={{
                             ...props.image,
-                            aspectRatio: aspect,
+                            // aspectRatio: aspect,
                         }}
                         durationFadeIn={500}
                     />
