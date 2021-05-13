@@ -42,6 +42,13 @@
 
 .cv {
     overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.cv::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 .contact {

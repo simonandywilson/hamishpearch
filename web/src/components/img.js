@@ -24,6 +24,13 @@ const Img = React.forwardRef((props, ref) => {
         <figure className={style.figure} key={props._key} ref={ref}>
             <figcaption className={style.figcaption}>
                 <div className={style.name}>{props.title}</div>
+                <div className={style.pdf}>
+                    {props.pdf && (
+                        <a href={props.pdf.asset.url} download target="_new">
+                            [PDF]
+                        </a>
+                    )}
+                </div>
                 <div className={style.materials}>{props.materials}</div>
                 <div className={style.dimensions}>{props.dimensions}</div>
                 <div className={style.year}>{props.date}</div>

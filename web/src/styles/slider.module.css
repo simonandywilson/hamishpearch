@@ -64,14 +64,9 @@ Slider
 .counter {
     font-size: var(--font-size-counter);
     line-height: 100%;
-    grid-column: 2/3;
+    grid-column: var(--slider-counter-column);
 }
 
 .spacer {
     grid-column: 2/4;
 }
-
-/*----------------------------------------
-Description
-----------------------------------------*/
-

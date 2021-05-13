@@ -21,16 +21,13 @@ Variables
         --visibility-alt: block;
         --justify: end;
 
-        --three-column: 1fr 1fr 0.3fr;
-        --four-column: 0.7fr 0.3fr 1fr 0.3fr;
-        --five-column: 0.7fr 0.3fr 0.7fr 0.3fr 0.3fr;
-
         --header-column: var(--two-column);
 
         --project-column: var(--two-column);
 
         --slider-column: var(--one-column);
-        --slider-counter: var(--four-column);
+        --slider-counter: var(--four-column-small);
+        --slider-counter-column: 3 / 4;
         --expand-padding: var(--padding);
         --description-padding: var(--padding);
         --description-expand: block;
@@ -74,12 +71,13 @@ Variables
 
         --slider-column: var(--three-column);
         --slider-counter: var(--four-column);
+        --slider-counter-column: 2 / 3;
         --expand-padding: 0;
         --description-padding: 0;
         --description-expand: none;
 
         --figcaption-column: var(--caption-column);
-        --image-column: var(--four-column);
+        --image-column: var(--four-column-image);
         --image-padding: var(--padding);
         --materials-padding: var(--padding);
         --span: 0;
@@ -117,12 +115,13 @@ Variables
 
         --slider-column: var(--three-column-large);
         --slider-counter: var(--four-column-large);
+        --slider-counter-column: 2 / 3;
         --expand-padding: 0;
         --description-padding: 0;
         --description-expand: none;
 
         --figcaption-column: var(--caption-column-large);
-        --image-column: var(--four-column-large);
+        --image-column: var(--four-column-image-large);
         --image-padding: var(--padding);
         --materials-padding: var(--padding);
         --span: 0;
@@ -142,10 +141,12 @@ Variables
     --three-column: 1fr 1fr 0.3fr;
     --three-column-large: 1fr 1fr 0.15fr;
     --four-column-small: 0.7fr 0.5fr 0.5fr 0.2fr;
-    --four-column: 0.7fr 0.3fr 1fr 0.3fr;
-    --four-column-large: 0.8fr 0.2fr 1fr 0.15fr;
-    --caption-column: 1fr 0.7fr 0.3fr 0.3fr;
-    --caption-column-large: 1fr 0.7fr 0.3fr 0.15fr;
+    --four-column: 0.6fr 0.4fr 1fr 0.3fr;
+    --four-column-image: 0.8fr 0.2fr 1fr 0.3fr;
+    --four-column-large: 0.6fr 0.4fr 1fr 0.15fr;
+    --four-column-image-large: 0.8fr 0.2fr 1fr 0.15fr;
+    --caption-column: 0.6fr 0.4fr 0.7fr 0.3fr 0.3fr;
+    --caption-column-large: 0.6fr 0.4fr 0.7fr 0.3fr 0.15fr;
     --cursor: pointer;
     --background-colour: rgb(248, 248, 248);
 }

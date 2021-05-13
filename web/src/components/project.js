@@ -8,7 +8,7 @@ const Project = React.forwardRef((props, ref) => {
     // Variables for animated dom nodes
     const childrenRef = useRef([]);
     let project = useRef(null);
-    let cross = useRef(null);
+    let underline = useRef(null);
     let wrapper = useRef(null);
 
     const [state, setState] = useState({
@@ -40,17 +40,17 @@ const Project = React.forwardRef((props, ref) => {
         }
     };
 
-    const crossIn = () => {
+    const underlineIn = () => {
         if (state.collapsed === true) {
-            gsap.set(cross, {
+            gsap.set(underline, {
                 autoAlpha: 1,
             });
         }
     };
 
-    const crossOut = () => {
+    const underlineOut = () => {
         if (state.collapsed === true) {
-            gsap.set(cross, {
+            gsap.set(underline, {
                 autoAlpha: 0,
             });
         }
@@ -82,8 +82,7 @@ const Project = React.forwardRef((props, ref) => {
             gsap.set(wrapper, {
                 display: "none",
             });
-            gsap.to(cross, {
-                // rotation: 45,
+            gsap.to(underline, {
                 autoAlpha: 0,
                 duration: 0.5,
             });
@@ -99,13 +98,9 @@ const Project = React.forwardRef((props, ref) => {
             gsap.set(wrapper, {
                 display: "block",
             });
-            gsap.set(cross, {
+            gsap.set(underline, {
                 autoAlpha: 1,
             });
-            // gsap.to(cross, {
-            //     rotation: 180,
-            //     duration: 0.5,
-            // });
             gsap.to(childrenRef.current, {
                 autoAlpha: 1,
                 duration: 0.4,
@@ -120,17 +115,14 @@ const Project = React.forwardRef((props, ref) => {
                 className={style.project}
                 ref={(el) => (project = el)}
                 onClick={handleProject}
-                onMouseEnter={crossIn}
-                onMouseLeave={crossOut}
-                onFocus={crossIn}
+                onMouseEnter={underlineIn}
+                onMouseLeave={underlineOut}
+                onFocus={underlineIn}
                 role="presentation"
             >
                 <div className={style.title}>
                     <span className={style.padding}>{props.title}</span>
-                    <span className={style.underline} ref={(el) => (cross = el)}></span>
-                    {/* <span className={style.cross} ref={(el) => (cross = el)}>
-                        &#10005;
-                    </span> */}
+                    <span className={style.underline} ref={(el) => (underline = el)}></span>
                 </div>
                 <div className={style.location}>{props.location}</div>
                 <div className={style.date}>{props.date}</div>

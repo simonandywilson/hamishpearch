@@ -16,10 +16,6 @@
     padding-right: var(--padding);
 }
 
-.cross {
-    display: inline-block;
-}
-
 .text > p {
     margin-top: var(--row-height);
     margin-bottom: 0;

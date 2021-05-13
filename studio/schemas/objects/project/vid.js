@@ -65,6 +65,11 @@ export default {
             },
             initialValue: "small",
         },
+        {
+            title: "PDF",
+            name: "pdf",
+            type: "file",
+        },
     ],
     preview: {
         select: {

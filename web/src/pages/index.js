@@ -95,6 +95,7 @@ const Home = () => {
                                             alt={content.alt}
                                             image={content.asset.fluid}
                                             aspectRatio={content.asset.fluid.aspectRatio}
+                                            pdf={content.pdf}
                                         />
                                     ) : (
                                         <Vid
@@ -106,29 +107,10 @@ const Home = () => {
                                             date={content.date}
                                             size={content.size}
                                             video={content._rawVideo}
+                                            pdf={content.pdf}
                                         />
                                     );
                                 })}
-
-                                {/* {project.gallery.length > 0 && (
-                                    <Gallery name={project.gallerytitle}>
-                                        {project.gallery.map((image) => {
-                                            return (
-                                                <div key={image._key}>
-                                                    <Image
-                                                        title={image.title}
-                                                        alt={image.alt}
-                                                        fluid={{
-                                                            ...image.asset.fluid,
-                                                            aspectRatio: 1.5,
-                                                        }}
-                                                        durationFadeIn={1000}
-                                                    />
-                                                </div>
-                                            );
-                                        })}
-                                    </Gallery>
-                                )} */}
                             </Project>
                         );
                     })}
@@ -176,6 +158,11 @@ const getData = graphql`
                                 aspectRatio
                             }
                         }
+                        pdf {
+                            asset {
+                                url
+                            }
+                        }
                     }
                     ... on SanityVid {
                         _type
@@ -187,6 +174,11 @@ const getData = graphql`
                         date(formatString: "YYYY")
                         size
                         _rawVideo(resolveReferences: { maxDepth: 10 })
+                        pdf {
+                            asset {
+                                url
+                            }
+                        }
                     }
                 }
             }

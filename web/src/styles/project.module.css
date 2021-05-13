@@ -55,7 +55,6 @@ td {
     grid-auto-rows: var(--row-height);
     user-select: none;
     z-index: 99;
-    /* cursor: var(--cursor); */
 }
 
 .title {
@@ -75,18 +74,6 @@ td {
     width: 100%;
     grid-column: 1/-1;
 }
-
-/* .cross {
-    visibility: hidden;
-    width: max-content;
-    height: max-content;
-    display: inline-block;
-    transform: rotate(45deg);
-} */
-
-/* .padding {
-    padding-right: var(--padding);
-} */
 
 /*----------------------------------------
 Project
@@ -116,16 +103,12 @@ Project
     padding-bottom: var(--figcaption-padding);
 }
 
-.name {
-    grid-column: var(--span);
-}
-
 .materials {
     padding-right: var(--materials-padding);
     grid-column: var(--span);
 }
 
-.count,
+.pdf,
 .year  {
     justify-self: var(--justify);
 }
@@ -152,4 +135,5 @@ Images
 
 .portrait {
     grid-column: var(--portrait-image);
+    margin-right: var(--image-padding);
 }
